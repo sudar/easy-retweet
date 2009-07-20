@@ -27,7 +27,7 @@ if (function_exists('easy_retweet_button')) echo easy_retweet_button();
 
 More information available at the [Plugins home page][1].
 
- [1]: sudarmuthu.com/wordpress/easy-retweet
+ [1]: http://sudarmuthu.com/wordpress/easy-retweet
 	
 == Installation ==
 
