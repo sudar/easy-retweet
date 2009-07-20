@@ -28,7 +28,7 @@ class EasyRetweet {
         add_filter("plugin_action_links_$plugin", array(&$this, 'add_action_links'));
 
         // Register filters
-        add_filter('the_content', array(&$this, 'append_retweet_button') , 999);
+        add_filter('the_content', array(&$this, 'append_retweet_button') , 99);
         // Enqueue the script
         wp_enqueue_script("retweet", '/' . PLUGINDIR . '/easy-retweet/js/retweet.js');
     }
@@ -106,17 +106,10 @@ class EasyRetweet {
                     <tr valign="top">
                         <th scope="row"><?php _e( 'Display', 'easy-retweet' ); ?></th>
                         <td>
-                            <label><input type="checkbox" name="retweet-style[display-page]" value="1" <?php checked("1", $options['display-page']); ?> /> <?php _e("Display the button on pages");?></label>
+                            <p><label><input type="checkbox" name="retweet-style[display-page]" value="1" <?php checked("1", $options['display-page']); ?> /> <?php _e("Display the button on pages");?></label></p>
+                            <p><label><input type="checkbox" name="retweet-style[display-archive]" value="1" <?php checked("1", $options['display-archive']); ?> /> <?php _e("Display the button on archive pages");?></label></p>
                         </td>
                     </tr>
-<!--
-                    <tr>
-                        <th>&nbsp;</th>
-                        <td>
-                            <label><input type="radio" name="retweet-style[display-page]" value="1" <?php checked("1", $options['display-page']); ?> /> <?php _e("Display the button on your feed");?></label>
-                        </td>
-                    </tr>
--->
                 </table>
 
                 <p class="submit">
@@ -135,16 +128,17 @@ class EasyRetweet {
     function append_retweet_button($content) {
         $options = get_option('retweet-style');
 
-        if (is_single() || ($options['display-page'] == "1" && is_page())) {
+        if (is_single() || ($options['display-page'] == "1" && is_page()) || ($options['display-archive'] == "1" && is_archive())) {
+            $button = easy_retweet_button(false);
             switch ($options['position']) {
                 case "before":
-                    $content = easy_retweet_button(false) . $content;
+                    $content = $button . $content;
                 break;
                 case "after":
-                    $content = $content . easy_retweet_button(false);
+                    $content = $content . $button;
                 break;
                 case "both":
-                    $content = easy_retweet_button(false) . $content . easy_retweet_button(false);
+                    $content = $button . $content . $button;
                 break;
                 case "manual":
                 default:
@@ -174,7 +168,7 @@ function easy_retweet_button($display = true) {
     $title = get_the_title($post->ID);
 
     $options = get_option('retweet-style');
-    $align = ($option['align'] == "vert")? "vert": "";
+    $align = ($options['align'] == "vert")? "vert": "";
 
     $output = "<a href='$permalink' class='retweet $align'>$title</a>";
     
