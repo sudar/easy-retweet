@@ -4,8 +4,14 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 0.1
+Version: 0.3
 Author URI: http://sudarmuthu.com/
+Text Domain: easy-retweet
+
+=== RELEASE NOTES ===
+2009-07-13 – v0.1 – Initial Release
+2009-07-20 - v0.2 - Added option to add/remove button in archive page.
+2009-07-21 - v0.3 - Added support for translation.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -55,7 +61,7 @@ class EasyRetweet {
      */
     function add_action_links( $links ) {
         // Add a link to this plugin's settings page
-        $settings_link = '<a href="options-general.php?page=easy-retweet">' . __("Settings") . '</a>';
+        $settings_link = '<a href="options-general.php?page=easy-retweet">' . __("Settings", 'easy-retweet') . '</a>';
         array_unshift( $links, $settings_link );
         return $links;
     }
@@ -65,7 +71,7 @@ class EasyRetweet {
      */
     function add_footer_links() {
         $plugin_data = get_plugin_data( __FILE__ );
-        printf('%1$s ' . __("plugin") .' | ' . __("Version") . ' %2$s | '. __('by') . ' %3$s<br />', $plugin_data['Title'], $plugin_data['Version'], $plugin_data['Author']);
+        printf('%1$s ' . __("plugin", 'easy-retweet') .' | ' . __("Version", 'easy-retweet') . ' %2$s | '. __('by', 'easy-retweet') . ' %3$s<br />', $plugin_data['Title'], $plugin_data['Version'], $plugin_data['Author']);
     }
 
     /**
@@ -87,33 +93,33 @@ class EasyRetweet {
                     <tr valign="top">
                         <th scope="row"><?php _e( 'Position', 'easy-retweet' ); ?></th>
                         <td>
-                            <p><label><input type="radio" name="retweet-style[position]" value="before" <?php checked("before", $options['position']); ?> /> <?php _e("Before the content of your post");?></label></p>
-                            <p><label><input type="radio" name="retweet-style[position]" value="after" <?php checked("after", $options['position']); ?> /> <?php _e("After the content of your post");?></label></p>
-                            <p><label><input type="radio" name="retweet-style[position]" value="both" <?php checked("both", $options['position']); ?> /> <?php _e("Before AND After the content of your post");?></label></p>
-                            <p><label><input type="radio" name="retweet-style[position]" value="manual" <?php checked("manual", $options['position']); ?> /> <?php _e("Manually call the retweet button");?></label></p>
-                            <p><?php _e("You can manually call the <code>easy_retweet_button</code> function. E.g. <code>if (function_exists('easy_retweet_button')) echo easy_retweet_button();."); ?></p>
+                            <p><label><input type="radio" name="retweet-style[position]" value="before" <?php checked("before", $options['position']); ?> /> <?php _e("Before the content of your post", 'easy-retweet');?></label></p>
+                            <p><label><input type="radio" name="retweet-style[position]" value="after" <?php checked("after", $options['position']); ?> /> <?php _e("After the content of your post", 'easy-retweet');?></label></p>
+                            <p><label><input type="radio" name="retweet-style[position]" value="both" <?php checked("both", $options['position']); ?> /> <?php _e("Before AND After the content of your post", 'easy-retweet');?></label></p>
+                            <p><label><input type="radio" name="retweet-style[position]" value="manual" <?php checked("manual", $options['position']); ?> /> <?php _e("Manually call the retweet button", 'easy-retweet');?></label></p>
+                            <p><?php _e("You can manually call the <code>easy_retweet_button</code> function. E.g. <code>if (function_exists('easy_retweet_button')) echo easy_retweet_button();.", 'easy-retweet'); ?></p>
                         </td>
                     </tr>
 
                     <tr valign="top">
                         <th scope="row"><?php _e( 'Type', 'easy-retweet' ); ?></th>
                         <td>
-                            <p><label><input type="radio" name="retweet-style[align]" value="hori" <?php checked("hori", $options['align']); ?> /> <?php _e("Horizontal button");?></label></p>
-                            <p><label><input type="radio" name="retweet-style[align]" value="vert" <?php checked("vert", $options['align']); ?> /> <?php _e("Vertical button");?></label></p>
+                            <p><label><input type="radio" name="retweet-style[align]" value="hori" <?php checked("hori", $options['align']); ?> /> <?php _e("Horizontal button", 'easy-retweet');?></label></p>
+                            <p><label><input type="radio" name="retweet-style[align]" value="vert" <?php checked("vert", $options['align']); ?> /> <?php _e("Vertical button", 'easy-retweet');?></label></p>
                         </td>
                     </tr>
 
                     <tr valign="top">
                         <th scope="row"><?php _e( 'Display', 'easy-retweet' ); ?></th>
                         <td>
-                            <p><label><input type="checkbox" name="retweet-style[display-page]" value="1" <?php checked("1", $options['display-page']); ?> /> <?php _e("Display the button on pages");?></label></p>
-                            <p><label><input type="checkbox" name="retweet-style[display-archive]" value="1" <?php checked("1", $options['display-archive']); ?> /> <?php _e("Display the button on archive pages");?></label></p>
+                            <p><label><input type="checkbox" name="retweet-style[display-page]" value="1" <?php checked("1", $options['display-page']); ?> /> <?php _e("Display the button on pages", 'easy-retweet');?></label></p>
+                            <p><label><input type="checkbox" name="retweet-style[display-archive]" value="1" <?php checked("1", $options['display-archive']); ?> /> <?php _e("Display the button on archive pages", 'easy-retweet');?></label></p>
                         </td>
                     </tr>
                 </table>
 
                 <p class="submit">
-                    <input type="submit" name="easy-retweet-submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+                    <input type="submit" name="easy-retweet-submit" class="button-primary" value="<?php _e('Save Changes', 'easy-retweet') ?>" />
                 </p>
             </form>
         </div>

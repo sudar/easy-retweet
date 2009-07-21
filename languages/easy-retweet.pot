@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Sudar
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Easy Retweet 0.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/easy-retweet\n"
+"POT-Creation-Date: 2009-07-21 16:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. #-#-#-#-#  easy-retweet.pot (Easy Retweet 0.2)  #-#-#-#-#
+#. Plugin Name of an extension
+#: easy-retweet.php:46
+msgid "Easy Retweet"
+msgstr ""
+
+#: easy-retweet.php:64
+msgid "Settings"
+msgstr ""
+
+#: easy-retweet.php:74
+msgid "plugin"
+msgstr ""
+
+#: easy-retweet.php:74
+msgid "Version"
+msgstr ""
+
+#: easy-retweet.php:74
+msgid "by"
+msgstr ""
+
+#: easy-retweet.php:84
+msgid "Easy Retweet Settings"
+msgstr ""
+
+#: easy-retweet.php:94
+msgid "Position"
+msgstr ""
+
+#: easy-retweet.php:96
+msgid "Before the content of your post"
+msgstr ""
+
+#: easy-retweet.php:97
+msgid "After the content of your post"
+msgstr ""
+
+#: easy-retweet.php:98
+msgid "Before AND After the content of your post"
+msgstr ""
+
+#: easy-retweet.php:99
+msgid "Manually call the retweet button"
+msgstr ""
+
+#: easy-retweet.php:100
+msgid ""
+"You can manually call the <code>easy_retweet_button</code> function. E.g. "
+"<code>if (function_exists('easy_retweet_button')) echo easy_retweet_button"
+"();."
+msgstr ""
+
+#: easy-retweet.php:105
+msgid "Type"
+msgstr ""
+
+#: easy-retweet.php:107
+msgid "Horizontal button"
+msgstr ""
+
+#: easy-retweet.php:108
+msgid "Vertical button"
+msgstr ""
+
+#: easy-retweet.php:113
+msgid "Display"
+msgstr ""
+
+#: easy-retweet.php:115
+msgid "Display the button on pages"
+msgstr ""
+
+#: easy-retweet.php:116
+msgid "Display the button on archive pages"
+msgstr ""
+
+#: easy-retweet.php:122
+msgid "Save Changes"
+msgstr ""
+
+#. Plugin URI of an extension
+msgid "http://sudarmuthu.com/wordpress/easy-retweet"
+msgstr ""
+
+#. Description of an extension
+msgid "Adds a Retweet button to your WordPress posts."
+msgstr ""
+
+#. Author of an extension
+msgid "Sudar"
+msgstr ""
+
+#. Author URI of an extension
+msgid "http://sudarmuthu.com/"
+msgstr ""
