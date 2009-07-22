@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 0.3
+Version: 0.4
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -12,6 +12,7 @@ Text Domain: easy-retweet
 2009-07-13 – v0.1 – Initial Release
 2009-07-20 - v0.2 - Added option to add/remove button in archive page.
 2009-07-21 - v0.3 - Added support for translation.
+2009-07-22 - v0.4 - Added option to add/remove button in home page.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -114,6 +115,7 @@ class EasyRetweet {
                         <td>
                             <p><label><input type="checkbox" name="retweet-style[display-page]" value="1" <?php checked("1", $options['display-page']); ?> /> <?php _e("Display the button on pages", 'easy-retweet');?></label></p>
                             <p><label><input type="checkbox" name="retweet-style[display-archive]" value="1" <?php checked("1", $options['display-archive']); ?> /> <?php _e("Display the button on archive pages", 'easy-retweet');?></label></p>
+                            <p><label><input type="checkbox" name="retweet-style[display-home]" value="1" <?php checked("1", $options['display-home']); ?> /> <?php _e("Display the button in home page", 'easy-retweet');?></label></p>
                         </td>
                     </tr>
                 </table>
@@ -134,7 +136,11 @@ class EasyRetweet {
     function append_retweet_button($content) {
         $options = get_option('retweet-style');
 
-        if (is_single() || ($options['display-page'] == "1" && is_page()) || ($options['display-archive'] == "1" && is_archive())) {
+        if (is_single()
+            || ($options['display-page'] == "1" && is_page())
+            || ($options['display-archive'] == "1" && is_archive())
+            || ($options['display-home'] == "1" && is_home())) {
+
             $button = easy_retweet_button(false);
             switch ($options['position']) {
                 case "before":

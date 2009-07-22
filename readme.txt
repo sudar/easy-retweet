@@ -3,7 +3,7 @@ Contributors: sudar
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
 Tested up to: 2.8.2
-Stable tag: 0.3
+Stable tag: 0.4
 	
 Adds a Retweet button to your WordPress posts
 
@@ -33,19 +33,23 @@ More information available at the [Plugins home page][1].
 
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
 == Changelog ==
-### Changelog
 
-*   v0.1(2009-07-13)
 
-Initial Release
+###v0.1 (2009-07-13)
 
-*   v0.2(2009-07-20)
+*   Initial Release
 
-Added option to add/remove button in archive page.
+###v0.2 (2009-07-20)
 
-*   v0.3(2009-07-22)
+*   Added option to add/remove button in archive pages.
 
-Added support for translation.
+###v0.3 (2009-07-21)
+
+*   Added support for translation.
+
+###v0.4 (2009-07-22)
+
+*   Added option to add/remove button in home page.
 
 ==Readme Generator== 
 
