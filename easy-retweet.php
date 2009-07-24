@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 0.4
+Version: 0.5
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -13,6 +13,7 @@ Text Domain: easy-retweet
 2009-07-20 - v0.2 - Added option to add/remove button in archive page.
 2009-07-21 - v0.3 - Added support for translation.
 2009-07-22 - v0.4 - Added option to add/remove button in home page.
+2009-07-24 - v0.5 - Added option to change the text which is displayed in the button.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -38,6 +39,9 @@ class EasyRetweet {
         add_filter('the_content', array(&$this, 'append_retweet_button') , 99);
         // Enqueue the script
         wp_enqueue_script("retweet", '/' . PLUGINDIR . '/easy-retweet/js/retweet.js');
+
+        // add config for the script
+        add_action( 'wp_head', array(&$this, 'add_script_config'),999 );
     }
 
     /**
@@ -89,6 +93,7 @@ class EasyRetweet {
                 <?php $options = get_option('retweet-style'); ?>
                 <?php $options['align'] = ($options['align'] == "")? "hori":$options['align'];?>
                 <?php $options['position'] = ($options['position'] == "")? "after":$options['position'];?>
+                <?php $options['text'] = ($options['text'] == "")? "Retweet":$options['text'];?>
 
                 <table class="form-table">
                     <tr valign="top">
@@ -99,6 +104,14 @@ class EasyRetweet {
                             <p><label><input type="radio" name="retweet-style[position]" value="both" <?php checked("both", $options['position']); ?> /> <?php _e("Before AND After the content of your post", 'easy-retweet');?></label></p>
                             <p><label><input type="radio" name="retweet-style[position]" value="manual" <?php checked("manual", $options['position']); ?> /> <?php _e("Manually call the retweet button", 'easy-retweet');?></label></p>
                             <p><?php _e("You can manually call the <code>easy_retweet_button</code> function. E.g. <code>if (function_exists('easy_retweet_button')) echo easy_retweet_button();.", 'easy-retweet'); ?></p>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Text', 'easy-retweet' ); ?></th>
+                        <td>
+                            <p><label><input type="text" name="retweet-style[text]" value="<?php echo $options['text']; ?>" /></label></p>
+                            <p><?php _e("The text that you enter here will be displayed in the button.", 'easy-retweet');?></p>
                         </td>
                     </tr>
 
@@ -159,6 +172,23 @@ class EasyRetweet {
             }
         }
         return $content;
+    }
+
+    /**
+     * Add config to the JS Script
+     */
+    function add_script_config() {
+        $options = get_option('retweet-style');
+        $options['text'] = ($options['text'] == "")? "Retweet":$options['text'];
+
+        if ($options['text'] != "Retweet") {
+            // user has configured some text. So output it
+            echo <<<EO
+                <script>
+                    RetweetJS.link_text = "{$options['text']}";
+                </script>
+EO;
+        }
     }
 
     // PHP4 compatibility

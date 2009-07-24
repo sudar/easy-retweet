@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy Retweet 0.2\n"
+"Project-Id-Version: Easy Retweet 0.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/easy-retweet\n"
-"POT-Creation-Date: 2009-07-21 16:13+0000\n"
+"POT-Creation-Date: 2009-07-24 17:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,84 +16,96 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. #-#-#-#-#  easy-retweet.pot (Easy Retweet 0.2)  #-#-#-#-#
+#. #-#-#-#-#  easy-retweet.pot (Easy Retweet 0.5)  #-#-#-#-#
 #. Plugin Name of an extension
-#: easy-retweet.php:46
+#: easy-retweet.php:51
 msgid "Easy Retweet"
 msgstr ""
 
-#: easy-retweet.php:64
+#: easy-retweet.php:69
 msgid "Settings"
 msgstr ""
 
-#: easy-retweet.php:74
+#: easy-retweet.php:79
 msgid "plugin"
 msgstr ""
 
-#: easy-retweet.php:74
+#: easy-retweet.php:79
 msgid "Version"
 msgstr ""
 
-#: easy-retweet.php:74
+#: easy-retweet.php:79
 msgid "by"
 msgstr ""
 
-#: easy-retweet.php:84
+#: easy-retweet.php:89
 msgid "Easy Retweet Settings"
 msgstr ""
 
-#: easy-retweet.php:94
+#: easy-retweet.php:100
 msgid "Position"
 msgstr ""
 
-#: easy-retweet.php:96
+#: easy-retweet.php:102
 msgid "Before the content of your post"
 msgstr ""
 
-#: easy-retweet.php:97
+#: easy-retweet.php:103
 msgid "After the content of your post"
 msgstr ""
 
-#: easy-retweet.php:98
+#: easy-retweet.php:104
 msgid "Before AND After the content of your post"
 msgstr ""
 
-#: easy-retweet.php:99
+#: easy-retweet.php:105
 msgid "Manually call the retweet button"
 msgstr ""
 
-#: easy-retweet.php:100
+#: easy-retweet.php:106
 msgid ""
 "You can manually call the <code>easy_retweet_button</code> function. E.g. "
 "<code>if (function_exists('easy_retweet_button')) echo easy_retweet_button"
 "();."
 msgstr ""
 
-#: easy-retweet.php:105
+#: easy-retweet.php:111
+msgid "Text"
+msgstr ""
+
+#: easy-retweet.php:114
+msgid "The text that you enter here will be displayed in the button."
+msgstr ""
+
+#: easy-retweet.php:119
 msgid "Type"
 msgstr ""
 
-#: easy-retweet.php:107
+#: easy-retweet.php:121
 msgid "Horizontal button"
 msgstr ""
 
-#: easy-retweet.php:108
+#: easy-retweet.php:122
 msgid "Vertical button"
 msgstr ""
 
-#: easy-retweet.php:113
+#: easy-retweet.php:127
 msgid "Display"
 msgstr ""
 
-#: easy-retweet.php:115
+#: easy-retweet.php:129
 msgid "Display the button on pages"
 msgstr ""
 
-#: easy-retweet.php:116
+#: easy-retweet.php:130
 msgid "Display the button on archive pages"
 msgstr ""
 
-#: easy-retweet.php:122
+#: easy-retweet.php:131
+msgid "Display the button in home page"
+msgstr ""
+
+#: easy-retweet.php:137
 msgid "Save Changes"
 msgstr ""
 
