@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 0.5
+Version: 0.6
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -14,6 +14,7 @@ Text Domain: easy-retweet
 2009-07-21 - v0.3 - Added support for translation.
 2009-07-22 - v0.4 - Added option to add/remove button in home page.
 2009-07-24 - v0.5 - Added option to change the text which is displayed in the button.
+2009-07-26 - v0.6 - Prevented the script file from loading in Admin pages.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -32,16 +33,17 @@ class EasyRetweet {
         add_action( 'admin_menu', array(&$this, 'register_settings_page') );
         add_action( 'admin_init', array(&$this, 'add_settings') );
 
-        $plugin = plugin_basename(__FILE__);
-        add_filter("plugin_action_links_$plugin", array(&$this, 'add_action_links'));
-
-        // Register filters
-        add_filter('the_content', array(&$this, 'append_retweet_button') , 99);
         // Enqueue the script
-        wp_enqueue_script("retweet", '/' . PLUGINDIR . '/easy-retweet/js/retweet.js');
+        add_action('template_redirect', array(&$this, 'add_script'));
 
         // add config for the script
         add_action( 'wp_head', array(&$this, 'add_script_config'),999 );
+
+        // Register filters
+        add_filter('the_content', array(&$this, 'append_retweet_button') , 99);
+
+        $plugin = plugin_basename(__FILE__);
+        add_filter("plugin_action_links_$plugin", array(&$this, 'add_action_links'));
     }
 
     /**
@@ -57,6 +59,14 @@ class EasyRetweet {
     function add_settings() {
         // Register options
         register_setting( 'easy-retweet', 'retweet-style');
+    }
+
+    /**
+     * Enqueue the Retweet script
+     */
+    function add_script() {
+        // Enqueue the script
+        wp_enqueue_script("retweet", '/' . PLUGINDIR . '/easy-retweet/js/retweet.js');
     }
 
     /**
