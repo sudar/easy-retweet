@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 0.6
+Version: 0.7
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -15,6 +15,7 @@ Text Domain: easy-retweet
 2009-07-22 - v0.4 - Added option to add/remove button in home page.
 2009-07-24 - v0.5 - Added option to change the text which is displayed in the button.
 2009-07-26 - v0.6 - Prevented the script file from loading in Admin pages.
+2009-07-27 - v0.7 - Added an option to specify prefix for the Twitter message.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -126,6 +127,14 @@ class EasyRetweet {
                     </tr>
 
                     <tr valign="top">
+                        <th scope="row"><?php _e( 'Message Prefix', 'easy-retweet' ); ?></th>
+                        <td>
+                            <p><label><input type="text" name="retweet-style[prefix]" value="<?php echo $options['prefix']; ?>" /></label></p>
+                            <p><?php _e("The text that you want to be added in front of each twitter message.", 'easy-retweet');?></p>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
                         <th scope="row"><?php _e( 'Type', 'easy-retweet' ); ?></th>
                         <td>
                             <p><label><input type="radio" name="retweet-style[align]" value="hori" <?php checked("hori", $options['align']); ?> /> <?php _e("Horizontal button", 'easy-retweet');?></label></p>
@@ -191,14 +200,16 @@ class EasyRetweet {
         $options = get_option('retweet-style');
         $options['text'] = ($options['text'] == "")? "Retweet":$options['text'];
 
+        echo "<script>";
         if ($options['text'] != "Retweet") {
             // user has configured some text. So output it
-            echo <<<EO
-                <script>
-                    RetweetJS.link_text = "{$options['text']}";
-                </script>
-EO;
+            echo 'RetweetJS.link_text = "' . $options['text'] . '"';
         }
+
+        if ($options['prefix'] != "") {
+            echo 'RetweetJS.prefix = "' . $options['prefix'] . ' "';
+        }
+        echo "</script>";
     }
 
     // PHP4 compatibility
