@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 0.7
+Version: 0.8
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -16,6 +16,7 @@ Text Domain: easy-retweet
 2009-07-24 - v0.5 - Added option to change the text which is displayed in the button.
 2009-07-26 - v0.6 - Prevented the script file from loading in Admin pages.
 2009-07-27 - v0.7 - Added an option to specify prefix for the Twitter message.
+2009-07-28 - v0.8 - Added support for shortcode to retweet button.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -42,6 +43,9 @@ class EasyRetweet {
 
         // Register filters
         add_filter('the_content', array(&$this, 'append_retweet_button') , 99);
+
+        // register short code
+        add_shortcode('easy-retweet', array(&$this, 'shortcode_handler'));
 
         $plugin = plugin_basename(__FILE__);
         add_filter("plugin_action_links_$plugin", array(&$this, 'add_action_links'));
@@ -210,6 +214,15 @@ class EasyRetweet {
             echo 'RetweetJS.prefix = "' . $options['prefix'] . ' "';
         }
         echo "</script>";
+    }
+
+    /**
+     * Short code handler
+     * @param <type> $attr
+     * @param <type> $content 
+     */
+    function shortcode_handler($attr, $content) {
+        return easy_retweet_button(false);
     }
 
     // PHP4 compatibility
