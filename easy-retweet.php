@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 0.8
+Version: 0.9
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -17,6 +17,7 @@ Text Domain: easy-retweet
 2009-07-26 - v0.6 - Prevented the script file from loading in Admin pages.
 2009-07-27 - v0.7 - Added an option to specify prefix for the Twitter message.
 2009-07-28 - v0.8 - Added support for shortcode to retweet button.
+2009-07-31 - v0.9 - Fixed an issue with generated JavaScript. Thanks Dougal (http://dougal.gunters.org/).
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -134,7 +135,7 @@ class EasyRetweet {
                         <th scope="row"><?php _e( 'Message Prefix', 'easy-retweet' ); ?></th>
                         <td>
                             <p><label><input type="text" name="retweet-style[prefix]" value="<?php echo $options['prefix']; ?>" /></label></p>
-                            <p><?php _e("The text that you want to be added in front of each twitter message.", 'easy-retweet');?></p>
+                            <p><?php _e("The text that you want to be added in front of each twitter message. eg: <code>RT: @sudarmuthu</code>", 'easy-retweet');?></p>
                         </td>
                     </tr>
 
@@ -207,11 +208,11 @@ class EasyRetweet {
         echo "<script>";
         if ($options['text'] != "Retweet") {
             // user has configured some text. So output it
-            echo 'RetweetJS.link_text = "' . $options['text'] . '"';
+            echo 'RetweetJS.link_text = "' . $options['text'] . '";';
         }
 
         if ($options['prefix'] != "") {
-            echo 'RetweetJS.prefix = "' . $options['prefix'] . ' "';
+            echo 'RetweetJS.prefix = "' . $options['prefix'] . ' ";';
         }
         echo "</script>";
     }

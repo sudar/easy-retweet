@@ -3,7 +3,7 @@ Contributors: sudar
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
 Tested up to: 2.8.2
-Stable tag: 0.8
+Stable tag: 0.9
 	
 Adds a Retweet button to your WordPress posts
 
@@ -33,6 +33,10 @@ More information available at the [Plugins home page][1].
 
  [1]: http://sudarmuthu.com/wordpress/easy-retweet
 	
+
+If you like this Plugin, please vote for it at <a href = "http://weblogtoolscollection.com/pluginblog/2009/07/22/easy-retweet-wordpress-plugin/">WordPress Plugin Competition blog</a>.
+
+
 == Installation ==
 
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
@@ -70,6 +74,10 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 ###v0.8 (2009-07-28)
 
 *   Added support for shortcode to retweet button.
+
+###v0.9 (2009-07-31)
+
+*   Fixed an issue with generated JavaScript. Thanks Dougal (http://dougal.gunters.org/).
 
 ==Readme Generator== 
 
