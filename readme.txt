@@ -3,7 +3,7 @@ Contributors: sudar
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
 Tested up to: 2.8.2
-Stable tag: 0.9
+Stable tag: 1.0
 	
 Adds a Retweet button to your WordPress posts
 
@@ -40,6 +40,11 @@ If you like this Plugin, please vote for it at <a href = "http://weblogtoolscoll
 == Installation ==
 
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
+
+== Screenshots ==
+1. Settings page
+
+
 == Changelog ==
 
 
@@ -78,6 +83,11 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 ###v0.9 (2009-07-31)
 
 *   Fixed an issue with generated JavaScript. Thanks Dougal (http://dougal.gunters.org/).
+
+###v1.0 (2009-08-02)
+
+*   Added option to enter your own Bit.ly username and api key.
+*   Added option to sepcify your own attributes like rel or target to the retweet link.
 
 ==Readme Generator== 
 
