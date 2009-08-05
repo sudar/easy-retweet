@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 1.0
+Version: 1.1.0
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -19,6 +19,7 @@ Text Domain: easy-retweet
 2009-07-28 - v0.8 - Added support for shortcode to retweet button.
 2009-07-31 - v0.9 - Fixed an issue with generated JavaScript. Thanks Dougal (http://dougal.gunters.org/).
 2009-08-02 - v1.0 - Added an option to specify bit.ly username, API Key and also other attributes for the link.
+2009-08-05 - v1.1.0 - Generating the js file from php to fix issues wiht bit.ly key. The urls generated will appear in bit.ly account.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -39,9 +40,6 @@ class EasyRetweet {
 
         // Enqueue the script
         add_action('template_redirect', array(&$this, 'add_script'));
-
-        // add config for the script
-        add_action( 'wp_head', array(&$this, 'add_script_config'),999 );
 
         // Register filters
         add_filter('the_content', array(&$this, 'append_retweet_button') , 99);
@@ -73,7 +71,7 @@ class EasyRetweet {
      */
     function add_script() {
         // Enqueue the script
-        wp_enqueue_script("retweet", '/' . PLUGINDIR . '/' . dirname(plugin_basename(__FILE__)) . '/js/retweet.js');
+        wp_enqueue_script("retweet", '/' . PLUGINDIR . '/' . dirname(plugin_basename(__FILE__)) . '/js/retweet.js.php');
     }
 
     /**
@@ -223,31 +221,6 @@ class EasyRetweet {
             }
         }
         return $content;
-    }
-
-    /**
-     * Add config to the JS Script
-     */
-    function add_script_config() {
-        $options = get_option('retweet-style');
-        $options['text'] = ($options['text'] == "")? "Retweet":$options['text'];
-
-        echo "<script>";
-        if ($options['text'] != "Retweet") {
-            // user has configured some text. So output it
-            echo 'RetweetJS.link_text = "' . $options['text'] . '";';
-        }
-
-        if ($options['prefix'] != "") {
-            echo 'RetweetJS.prefix = "' . $options['prefix'] . ' ";';
-        }
-
-        if ($options['username'] != "" && $options['username'] != "retweetjs" && $options['apikey'] != "") {
-            echo 'RetweetJS.bitly_user = "' . $options['username'] . '";';
-            echo 'RetweetJS.bitly_key = "' . $options['apikey'] . '";';
-        }
-
-        echo "</script>";
     }
 
     /**
