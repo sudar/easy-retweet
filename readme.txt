@@ -2,8 +2,8 @@
 Contributors: sudar 
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
-Tested up to: 2.8.3
-Stable tag: 1.1.0
+Tested up to: 2.8.4
+Stable tag: 1.2.0
 	
 Adds a Retweet button to your WordPress posts
 
@@ -93,6 +93,10 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 *   The shorturls generated using your API key, will be linked with your account.
 *   Printing js using PHP, for better performance of JavaScript.
+
+###v1.2.0 (2009-08-18)
+
+*   Removed hard coded Plugin path to make it work even if the wp-content path is changed.
 
 ==Readme Generator== 
 
