@@ -3,7 +3,7 @@ Contributors: sudar
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
 Tested up to: 2.8.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 	
 Adds a Retweet button to your WordPress posts
 
@@ -11,13 +11,13 @@ Adds a Retweet button to your WordPress posts
 
 Easy ReTweet is a WordPress Plugin, which let’s you add retweet or Tweet this buttons for your WordPress posts, together with the retweet count.
 
-**Usage**
+###Usage###
 
 There are three ways you can add the retweet button. Automatic way, manual way and using shortcodes
 
 #### Automatic way
 
-Install the Plugin and choose the type and position of the button from the Plugin’s settings page.
+Install the Plugin and choose the type and position of the button from the Plugin’s settings page. You can also specifically enable/disable the button for each post or page from the write post/page screen.
 
 #### Manual way
 
@@ -44,6 +44,7 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 == Screenshots ==
 1. Settings page
 
+2. Enable/Disable button in the write post/page page
 
 == Changelog ==
 
@@ -97,6 +98,9 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 ###v1.2.0 (2009-08-18)
 
 *   Removed hard coded Plugin path to make it work even if the wp-content path is changed.
+
+###v1.3.0 (2009-08-19)
+*   Added the ability to enable/disable button on per page/post basics.
 
 ==Readme Generator== 
 

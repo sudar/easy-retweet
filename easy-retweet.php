@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 1.2.0
+Version: 1.3.0
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -26,6 +26,9 @@ Text Domain: easy-retweet
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
 
+/**
+ * Easy Retweet Plugin Class
+ */
 class EasyRetweet {
 
     /**
@@ -40,6 +43,12 @@ class EasyRetweet {
         add_action( 'admin_menu', array(&$this, 'register_settings_page') );
         add_action( 'admin_init', array(&$this, 'add_settings') );
 
+        /* Use the admin_menu action to define the custom boxes */
+        add_action('admin_menu', array(&$this, 'add_custom_box'));
+
+        /* Use the save_post action to do something with the data entered */
+        add_action('save_post', array(&$this, 'save_postdata'));
+
         // Enqueue the script
         add_action('template_redirect', array(&$this, 'add_script'));
 
@@ -52,6 +61,7 @@ class EasyRetweet {
         $plugin = plugin_basename(__FILE__);
         add_filter("plugin_action_links_$plugin", array(&$this, 'add_action_links'));
 
+        // for outputing js code
         $this->deliver_js();
     }
 
@@ -75,12 +85,12 @@ class EasyRetweet {
      */
     function add_script() {
         // Enqueue the script
-//        wp_enqueue_script("retweet", '/' . PLUGINDIR . '/' . dirname(plugin_basename(__FILE__)) . '/js/retweet.js.php');
         wp_enqueue_script('retweet', get_option('home') . '/?retweetjs');
     }
 
     /**
      * Deliver the js through PHP
+     * Thanks to Sivel http://sivel.net/ for this code
      */
     function deliver_js() {
         if ( array_key_exists('retweetjs', $_GET) ) {
@@ -95,6 +105,72 @@ class EasyRetweet {
             
             // die after printing js
             die();
+        }
+    }
+
+    /**
+     * Adds the custom section in the Post and Page edit screens
+     */
+    function add_custom_box() {
+
+        add_meta_box( 'retweet_enable_button', __( 'Easy Retweet Button', 'easy-retweet' ),
+                    array(&$this, 'inner_custom_box'), 'post', 'side' );
+        add_meta_box( 'retweet_enable_button', __( 'Easy Retweet Button', 'easy-retweet' ),
+                    array(&$this, 'inner_custom_box'), 'page', 'side' );
+    }
+
+    /**
+     * Prints the inner fields for the custom post/page section
+     */
+    function inner_custom_box() {
+        global $post;
+        $post_id = $post->ID;
+        
+        $option_value = '';
+        
+        if ($post_id > 0) {
+            $enable_retweet = get_post_meta($post->ID, 'enable_retweet_button', true);
+            if ($enable_retweet != '') {
+                $option_value = $enable_retweet;
+            }
+        }
+        // Use nonce for verification
+?>
+        <input type="hidden" name="retweet_noncename" id="retweet_noncename" value="<?php echo wp_create_nonce( plugin_basename(__FILE__) );?>" />
+
+        <label><input type="radio" name="retweet_button" value ="1" <?php checked('1', $option_value); ?> /> <?php _e('Enabled', 'easy-retweet'); ?></label>
+        <label><input type="radio" name="retweet_button" value ="0"  <?php checked('0', $option_value); ?> /> <?php _e('Disabled', 'easy-retweet'); ?></label>
+<?php
+    }
+
+    /**
+     * When the post is saved, saves our custom data
+     * @param string $post_id
+     * @return string return post id if nothing is saved
+     */
+    function save_postdata( $post_id ) {
+
+        // verify this came from the our screen and with proper authorization,
+        // because save_post can be triggered at other times
+
+        if ( !wp_verify_nonce( $_POST['retweet_noncename'], plugin_basename(__FILE__) )) {
+            return $post_id;
+        }
+
+        if ( 'page' == $_POST['post_type'] ) {
+            if ( !current_user_can( 'edit_page', $post_id ))
+                return $post_id;
+        } else {
+            if ( !current_user_can( 'edit_post', $post_id ))
+                return $post_id;
+        }
+
+        // OK, we're authenticated: we need to find and save the data
+
+        if (isset($_POST['retweet_button'])) {
+            $choice = $_POST['retweet_button'];
+            $choice = ($choice == '1')? '1' : '0';
+            update_post_meta($post_id, 'enable_retweet_button', $choice);
         }
     }
 
@@ -217,32 +293,68 @@ class EasyRetweet {
     }
 
     /**
-     * append the retweet_button
+     * Append the retweet_button
+     * 
+     * @global object $post Current post
+     * @param string $content Post content
+     * @return string modifiyed content
      */
     function append_retweet_button($content) {
+
+        global $post;
         $options = get_option('retweet-style');
 
-        if (is_single()
-            || ($options['display-page'] == "1" && is_page())
-            || ($options['display-archive'] == "1" && is_archive())
-            || ($options['display-home'] == "1" && is_home())) {
+        $enable_retweet = get_post_meta($post->ID, 'enable_retweet_button', true);
 
-            $button = easy_retweet_button(false);
-            switch ($options['position']) {
-                case "before":
-                    $content = $button . $content;
-                break;
-                case "after":
-                    $content = $content . $button;
-                break;
-                case "both":
-                    $content = $button . $content . $button;
-                break;
-                case "manual":
-                default:
-                    // nothing to do
-                break;
+        if ($enable_retweet != "") {
+            // if option per post/page is set
+            if ($enable_retweet == "1") {
+                // Retweet button is enabled
+
+                $content = $this->build_retweet_button($content, $options['position']);
+
+            } elseif ($enable_retweet == "0") {
+                // Retweet button is disabled
+                // Do nothing
             }
+
+        } else {
+            //Option per post/page is not set
+            if (is_single()
+                || ($options['display-page'] == "1" && is_page())
+                || ($options['display-archive'] == "1" && is_archive())
+                || ($options['display-home'] == "1" && is_home())) {
+
+                $content = $this->build_retweet_button($content, $options['position']);
+            }
+        }
+        return $content;
+    }
+
+    /**
+     * Helper function for append_retweet_button
+     *
+     * @param string $content The post content
+     * @param string $position Position of the button
+     * @return string Modifiyed content
+     */
+    function build_retweet_button($content, $position) {
+        $button = easy_retweet_button(false);
+
+        switch ($position) {
+            case "before":
+                $content = $button . $content;
+            break;
+            case "after":
+                $content = $content . $button;
+            break;
+            case "both":
+                $content = $button . $content . $button;
+            break;
+            case "manual":
+            default:
+                // nothing to do
+            break;
         }
         return $content;
     }
@@ -294,7 +406,7 @@ function easy_retweet_button($display = true) {
 
 /**
  * Print Retweet js
- * @param <array> $options
+ * @param array $options Plugin options
  */
 function print_retweet_js($options) {
 ?>
