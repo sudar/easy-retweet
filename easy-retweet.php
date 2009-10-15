@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 1.3.0
+Version: 1.4.0
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -22,6 +22,7 @@ Text Domain: easy-retweet
 2009-08-05 - v1.1.0 - Generating the js file from php to fix issues wiht bit.ly key. The urls generated will appear in bit.ly account.
 2009-08-18 - v1.2.0 - Removed hard coded Plugin path to make it work even if the wp-content path is changed.
 2009-08-19 - v1.3.0 - Added the ability to enable/disable button on per page/post basics.
+2009-10-15 - v1.4.0 - Added the ability to enable/disable button on per page/post basics, event if template function is used.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -370,7 +371,7 @@ class EasyRetweet {
 
     // PHP4 compatibility
     function EasyRetweet() {
-            $this->__construct();
+        $this->__construct();
     }
 }
 
@@ -386,17 +387,27 @@ function easy_retweet_button($display = true) {
     $permalink = get_permalink($post->ID);
     $title = get_the_title($post->ID);
 
-    $options = get_option('retweet-style');
-    $align = ($options['align'] == "vert")? "vert": "";
+    $enable_retweet = get_post_meta($post->ID, 'enable_retweet_button', true);
 
-    $output = "<a href='$permalink' class='retweet $align' ";
+    if ($enable_retweet == "" || $enable_retweet == "1") {
+        // if option per post/page is set or
+        // Retweet button is enabled
 
-    if ($options['linkattr'] != "") {
-        $output .= ' ' . $options['linkattr'] . ' ';
+        $options = get_option('retweet-style');
+        $align = ($options['align'] == "vert")? "vert": "";
+
+        $output = "<a href='$permalink' class='retweet $align' ";
+
+        if ($options['linkattr'] != "") {
+            $output .= ' ' . $options['linkattr'] . ' ';
+        }
+
+        $output .= ">$title</a>";
+
+    } else {
+        $output = '';
     }
 
-    $output .= ">$title</a>";
-    
     if ($display) {
         echo $output;
     } else {

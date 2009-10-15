@@ -3,7 +3,7 @@ Contributors: sudar
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
 Tested up to: 2.8.4
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 	
 Adds a Retweet button to your WordPress posts
 
@@ -102,6 +102,9 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 ###v1.3.0 (2009-08-19)
 *   Added the ability to enable/disable button on per page/post basics.
 
+###v1.4.0 (2009-10-15)
+*   Added the ability to enable/disable button on per page/post basics, event if template function is used.
+
 ==Readme Generator== 
 
-This Readme file was generated using <a href = 'http://sudarmuthu.com/projects/wp-readme.php'>wp-readme</a>, which generates readme files for WordPress Plugins.
+This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.
