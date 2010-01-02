@@ -1,15 +1,15 @@
-﻿=== Easy Retweet ===
+=== Easy Retweet ===
 Contributors: sudar 
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
-Tested up to: 2.8.4
-Stable tag: 1.4.0
+Tested up to: 2.9
+Stable tag: 1.5
 	
 Adds a Retweet button to your WordPress posts
 
 == Description ==
 
-Easy ReTweet is a WordPress Plugin, which let’s you add retweet or Tweet this buttons for your WordPress posts, together with the retweet count.
+Easy ReTweet is a WordPress Plugin, which let's you add retweet or Tweet this buttons for your WordPress posts, together with the retweet count.
 
 ###Usage###
 
@@ -17,7 +17,7 @@ There are three ways you can add the retweet button. Automatic way, manual way a
 
 #### Automatic way
 
-Install the Plugin and choose the type and position of the button from the Plugin’s settings page. You can also specifically enable/disable the button for each post or page from the write post/page screen.
+Install the Plugin and choose the type and position of the button from the Plugin's settings page. You can also specifically enable/disable the button for each post or page from the write post/page screen.
 
 #### Manual way
 
@@ -29,14 +29,19 @@ if (function_exists('easy_retweet_button')) echo easy_retweet_button();
 
 You can also place the shortcode [easy-retweet] anywhere in your post. This shortcode will be replaced by the button when the post is rendered.
 
-More information available at the [Plugins home page][1].
+### Translation
 
- [1]: http://sudarmuthu.com/wordpress/easy-retweet
+*   Belorussian (Thanks [FatCow][1])
+
+The pot file is available with the Plugin. If you are willing to do translation for the Plugin, use the pot file to create the .po files for your language and let me know. I will add it to the Plugin after giving credit to you.
+
+### Support
+
+Support for the Plugin is available from the [Plugin's home page][2]. If you have any questions or suggestions, do leave a comment there.
+
+ [1]: http://www.fatcow.com/
+ [2]: http://sudarmuthu.com/wordpress/easy-retweet
 	
-
-If you like this Plugin, please vote for it at <a href = "http://weblogtoolscollection.com/pluginblog/2009/07/22/easy-retweet-wordpress-plugin/">WordPress Plugin Competition blog</a>.
-
-
 == Installation ==
 
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
@@ -104,6 +109,10 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 ###v1.4.0 (2009-10-15)
 *   Added the ability to enable/disable button on per page/post basics, event if template function is used.
+
+###v1.5 (2010-01-02)
+*   Ability to specify custom message for twitter instead of the post title.
+*   Also added Belorussian Translations (Thanks FatCow).
 
 ==Readme Generator== 
 

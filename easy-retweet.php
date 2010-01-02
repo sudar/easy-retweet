@@ -4,12 +4,12 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 1.4.0
+Version: 1.5
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
 === RELEASE NOTES ===
-2009-07-13 – v0.1 – Initial Release
+2009-07-13 - v0.1 - Initial Release
 2009-07-20 - v0.2 - Added option to add/remove button in archive page.
 2009-07-21 - v0.3 - Added support for translation.
 2009-07-22 - v0.4 - Added option to add/remove button in home page.
@@ -23,6 +23,7 @@ Text Domain: easy-retweet
 2009-08-18 - v1.2.0 - Removed hard coded Plugin path to make it work even if the wp-content path is changed.
 2009-08-19 - v1.3.0 - Added the ability to enable/disable button on per page/post basics.
 2009-10-15 - v1.4.0 - Added the ability to enable/disable button on per page/post basics, event if template function is used.
+2010-01-02 - v1.5 - Ability to specify custom message for twitter instead of the post title. Also added Belorussian Translations (Thanks FatCow).
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -130,17 +131,27 @@ class EasyRetweet {
         $option_value = '';
         
         if ($post_id > 0) {
-            $enable_retweet = get_post_meta($post->ID, 'enable_retweet_button', true);
+            $enable_retweet = get_post_meta($post_id, 'enable_retweet_button', true);
             if ($enable_retweet != '') {
                 $option_value = $enable_retweet;
             }
+
+            $custom_retweet_text = get_post_meta($post_id, 'custom_retweet_text', true);
+
         }
         // Use nonce for verification
 ?>
         <input type="hidden" name="retweet_noncename" id="retweet_noncename" value="<?php echo wp_create_nonce( plugin_basename(__FILE__) );?>" />
-
+        <p>
         <label><input type="radio" name="retweet_button" value ="1" <?php checked('1', $option_value); ?> /> <?php _e('Enabled', 'easy-retweet'); ?></label>
         <label><input type="radio" name="retweet_button" value ="0"  <?php checked('0', $option_value); ?> /> <?php _e('Disabled', 'easy-retweet'); ?></label>
+        </p>
+        <p>
+            <label><?php _e('Custom Retweet Text:', 'easy-retweet'); ?><input type ="text" name="custom_retweet_text" value ="<?php echo $custom_retweet_text;?>" /></label>
+        </p>
+        <p>
+            <?php _e('If left blank, the post title will be used.', 'easy-retweet'); ?>
+        </p>
 <?php
     }
 
@@ -172,6 +183,11 @@ class EasyRetweet {
             $choice = $_POST['retweet_button'];
             $choice = ($choice == '1')? '1' : '0';
             update_post_meta($post_id, 'enable_retweet_button', $choice);
+        }
+
+        if (isset($_POST['custom_retweet_text'])) {
+            $custom_retweet_text = esc_attr($_POST['custom_retweet_text']);
+            update_post_meta($post_id, 'custom_retweet_text', $custom_retweet_text);
         }
     }
 
@@ -385,7 +401,12 @@ function easy_retweet_button($display = true) {
     global $wp_query;
     $post = $wp_query->post;
     $permalink = get_permalink($post->ID);
-    $title = get_the_title($post->ID);
+    $custom_retweet_text = get_post_meta($post->ID, 'custom_retweet_text', true);
+
+    if ($custom_retweet_text == '') {
+        // if the custom text message is empty default to post title
+        $custom_retweet_text = get_the_title($post->ID);
+    }
 
     $enable_retweet = get_post_meta($post->ID, 'enable_retweet_button', true);
 
@@ -402,7 +423,7 @@ function easy_retweet_button($display = true) {
             $output .= ' ' . $options['linkattr'] . ' ';
         }
 
-        $output .= ">$title</a>";
+        $output .= ">$custom_retweet_text</a>";
 
     } else {
         $output = '';
