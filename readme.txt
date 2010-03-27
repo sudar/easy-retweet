@@ -2,8 +2,8 @@
 Contributors: sudar 
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
-Tested up to: 2.9
-Stable tag: 1.5
+Tested up to: 2.9.2
+Stable tag: 1.6
 	
 Adds a Retweet button to your WordPress posts
 
@@ -32,6 +32,7 @@ You can also place the shortcode [easy-retweet] anywhere in your post. This shor
 ### Translation
 
 *   Belorussian (Thanks [FatCow][1])
+*   Spanish (Thanks Carlos Varela)
 
 The pot file is available with the Plugin. If you are willing to do translation for the Plugin, use the pot file to create the .po files for your language and let me know. I will add it to the Plugin after giving credit to you.
 
@@ -113,6 +114,9 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 ###v1.5 (2010-01-02)
 *   Ability to specify custom message for twitter instead of the post title.
 *   Also added Belorussian Translations (Thanks FatCow).
+
+###v1.6 (2010-03-27)
+*   Added Spanish Translations (Thanks Carlos Varela).
 
 ==Readme Generator== 
 

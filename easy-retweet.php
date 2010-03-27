@@ -4,7 +4,7 @@ Plugin Name: Easy Retweet
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Author: Sudar
-Version: 1.5
+Version: 1.6
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -24,6 +24,7 @@ Text Domain: easy-retweet
 2009-08-19 - v1.3.0 - Added the ability to enable/disable button on per page/post basics.
 2009-10-15 - v1.4.0 - Added the ability to enable/disable button on per page/post basics, event if template function is used.
 2010-01-02 - v1.5 - Ability to specify custom message for twitter instead of the post title. Also added Belorussian Translations (Thanks FatCow).
+2010-03-27 - v1.6 - Added Spanish Translations (Thanks Carlos Varela).
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -417,7 +418,7 @@ function easy_retweet_button($display = true) {
         $options = get_option('retweet-style');
         $align = ($options['align'] == "vert")? "vert": "";
 
-        $output = "<a href='$permalink' class='retweet $align' ";
+        $output = "<a href='$permalink' class='retweet $align' startCount = '0'";
 
         if ($options['linkattr'] != "") {
             $output .= ' ' . $options['linkattr'] . ' ';
@@ -545,7 +546,7 @@ function loaded(){
 		if ( clicks > 0 ) {
 			for ( var i = 0; i < elems.length; i++ ) {
 				var strong = document.createElement("strong");
-				strong.appendChild( document.createTextNode( clicks + " " ) );
+				strong.appendChild( document.createTextNode( clicks + parseInt(elems[i].attributes.startCount.value) + " " ) );
 				elems[i].insertBefore(strong, elems[i].firstChild);
 
 				if ( /(^|\s)vert(\s|$)/.test( elems[i].className ) ) {
