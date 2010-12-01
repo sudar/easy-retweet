@@ -2,8 +2,9 @@
 Contributors: sudar 
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
-Tested up to: 2.9.2
-Stable tag: 1.6
+Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
+Tested up to: 3.0.1
+Stable tag: 2.0
 	
 Adds a Retweet button to your WordPress posts
 
@@ -117,6 +118,9 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 ###v1.6 (2010-03-27)
 *   Added Spanish Translations (Thanks Carlos Varela).
+
+###v2.0 (2010-1-29)
+*   Added support for official Tweet button
 
 ==Readme Generator== 
 
