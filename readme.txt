@@ -119,7 +119,7 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 ###v1.6 (2010-03-27)
 *   Added Spanish Translations (Thanks Carlos Varela).
 
-###v2.0 (2010-1-29)
+###v2.0 (2010-11-29)
 *   Added support for official Tweet button
 
 ==Readme Generator== 
