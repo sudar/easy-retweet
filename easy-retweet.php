@@ -6,7 +6,7 @@ Description: Adds a Retweet button to your WordPress posts.
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 License: GPL
 Author: Sudar
-Version: 2.0
+Version: 2.1
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -28,6 +28,7 @@ Text Domain: easy-retweet
 2010-01-02 - v1.5 - Ability to specify custom message for twitter instead of the post title. Also added Belorussian Translations (Thanks FatCow).
 2010-03-27 - v1.6 - Added Spanish Translations (Thanks Carlos Varela).
 2010-11-29 - v2.0 - Added support for official twitter button.
+2010-12-05 - v2.1 - Fixed issue with the support for official twitter button.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -109,7 +110,7 @@ class EasyRetweet {
         // Enqueue the script only if the button type is bit.ly
         $options = get_option('retweet-style');
 
-        if ($options['button-style'] == 'bit.ly') {
+        if ($options['button-type'] == 'bit.ly') {
             wp_enqueue_script('retweet', get_option('home') . '/?retweetjs');
         }
     }
@@ -253,8 +254,7 @@ class EasyRetweet {
                 <?php $options['text'] = ($options['text'] == "")? "Retweet":$options['text'];?>
                 
                 <?php $options['button-type'] = ($options['button-type'] == "")? "twitter":$options['button-type'];?>
-
-                <?php $options['t-count'] = ($options['t-count'] == "")? "vert":$options['t-count'];?>
+                <?php $options['t-count'] = ($options['t-count'] == "")? "horizontal":$options['t-count'];?>
 
                 <h3><?php _e('General Settings', 'easy-retweet'); ?></h3>
                 <table class="form-table">
@@ -460,8 +460,9 @@ class EasyRetweet {
                 $content = $button . $content . $button;
             break;
             case "manual":
+            break;
             default:
-                // nothing to do
+                $content = $content . $button;
             break;
         }
         return $content;
@@ -509,7 +510,7 @@ function easy_retweet_button($display = true) {
 
         $options = get_option('retweet-style');
 
-        if ($options['button-style'] == 'bit.ly') {
+        if ($options['button-type'] == 'bit.ly') {
             //Bit.ly Button
             $align = ($options['align'] == "vert")? "vert": "";
 

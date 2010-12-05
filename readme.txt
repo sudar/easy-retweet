@@ -3,8 +3,8 @@ Contributors: sudar
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
-Tested up to: 3.0.1
-Stable tag: 2.0
+Tested up to: 3.0.2
+Stable tag: 2.1
 	
 Adds a Retweet button to your WordPress posts
 
@@ -49,9 +49,13 @@ Support for the Plugin is available from the [Plugin's home page][2]. If you hav
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
 
 == Screenshots ==
-1. Settings page
+1. Genral Settings page
 
-2. Enable/Disable button in the write post/page page
+2. Bit.ly Settings page
+
+3. Twitter button Settings page
+
+4. Enable/Disable button in the write post/page page
 
 == Changelog ==
 
@@ -121,6 +125,9 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 ###v2.0 (2010-11-29)
 *   Added support for official Tweet button
+
+###v2.1 (2010-12-05)
+*   Fixed issue with the support for official twitter button
 
 ==Readme Generator== 
 
