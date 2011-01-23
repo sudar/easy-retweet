@@ -6,7 +6,7 @@ Description: Adds a Retweet button to your WordPress posts.
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 License: GPL
 Author: Sudar
-Version: 2.1
+Version: 2.2
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -29,6 +29,7 @@ Text Domain: easy-retweet
 2010-03-27 - v1.6 - Added Spanish Translations (Thanks Carlos Varela).
 2010-11-29 - v2.0 - Added support for official twitter button.
 2010-12-05 - v2.1 - Fixed issue with the support for official twitter button.
+2011-01-23 - v2.2 - Fixed issue with permalink for official twitter button.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -391,9 +392,19 @@ class EasyRetweet {
                 </div>
 
                 <p class="submit">
-                    <input type="submit" name="easy-retweet-submit" class="button-primary" value="<?php _e('Save Changes', 'easy-retweet') ?>" />
+                    <input type="submit" name="easy-retweet-submit" class="button-primary" value="<?php _e('Save Changes', 'easy-retweet'); ?>" />
                 </p>
             </form>
+
+            <h3><?php _e('Support', 'easy-retweet'); ?></h3>
+            <p><?php _e('If you have any questions/comments/feedback about the Plugin then post a comment in the <a target="_blank" href = "http://sudarmuthu.com/wordpress/easy-retweet">Plugins homepage</a>.','easy-retweet'); ?></p>
+            <p><?php _e('If you like the Plugin, then consider doing one of the following.', 'easy-retweet'); ?></p>
+            <ul style="list-style:disc inside">
+                <li><?php _e('Write a blog post about the Plugin.', 'easy-retweet'); ?></li>
+                <li><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://sudarmuthu.com/wordpress/easy-retweet" data-text="Easy Retweet WordPress Plugin" data-count="none" data-via="sudarmuthu">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script><?php _e(' about it.', 'easy-retweet'); ?></li>
+                <li><?php _e('Give a <a href = "http://wordpress.org/extend/plugins/easy-retweet/" target="_blank">good rating</a>.', 'easy-retweet'); ?></li>
+                <li><?php _e('Say <a href = "http://sudarmuthu.com/if-you-wanna-thank-me" target="_blank">thank you</a>.', 'easy-retweet'); ?></li>
+            </ul>
         </div>
 <?php
         // Display credits in Footer
@@ -534,7 +545,7 @@ function easy_retweet_button($display = true) {
             }
 
             $output = <<<EOD
-            <a href="http://twitter.com/share" class="twitter-share-button" data-count="$t_count" data-text="$custom_retweet_text" data-via="$account1" $lang>Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+            <a href="http://twitter.com/share" class="twitter-share-button" data-count="$t_count" data-text="$custom_retweet_text" data-via="$account1" data-url="$permalink" $lang>Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 EOD;
 
             if ($style != '') {
