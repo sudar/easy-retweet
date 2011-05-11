@@ -6,7 +6,7 @@ Description: Adds a Retweet button to your WordPress posts.
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 License: GPL
 Author: Sudar
-Version: 2.3
+Version: 2.4
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -21,16 +21,17 @@ Text Domain: easy-retweet
 2009-07-28 - v0.8 - Added support for shortcode to retweet button.
 2009-07-31 - v0.9 - Fixed an issue with generated JavaScript. Thanks Dougal (http://dougal.gunters.org/).
 2009-08-02 - v1.0 - Added an option to specify bit.ly username, API Key and also other attributes for the link.
-2009-08-05 - v1.1.0 - Generating the js file from php to fix issues wiht bit.ly key. The urls generated will appear in bit.ly account.
-2009-08-18 - v1.2.0 - Removed hard coded Plugin path to make it work even if the wp-content path is changed.
-2009-08-19 - v1.3.0 - Added the ability to enable/disable button on per page/post basics.
-2009-10-15 - v1.4.0 - Added the ability to enable/disable button on per page/post basics, event if template function is used.
+2009-08-05 - v1.1 - Generating the js file from php to fix issues wiht bit.ly key. The urls generated will appear in bit.ly account.
+2009-08-18 - v1.2 - Removed hard coded Plugin path to make it work even if the wp-content path is changed.
+2009-08-19 - v1.3 - Added the ability to enable/disable button on per page/post basics.
+2009-10-15 - v1.4 - Added the ability to enable/disable button on per page/post basics, event if template function is used.
 2010-01-02 - v1.5 - Ability to specify custom message for twitter instead of the post title. Also added Belorussian Translations (Thanks FatCow).
 2010-03-27 - v1.6 - Added Spanish Translations (Thanks Carlos Varela).
 2010-11-29 - v2.0 - Added support for official twitter button.
 2010-12-05 - v2.1 - Fixed issue with the support for official twitter button.
 2011-01-23 - v2.2 - Fixed issue with permalink for official twitter button.
 2011-01-23 - v2.3 - Added Brazilian Portuguese translations.
+2011-05-11 - v2.4 - Added German translations.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
