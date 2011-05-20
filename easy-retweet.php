@@ -6,7 +6,7 @@ Description: Adds a Retweet button to your WordPress posts.
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 License: GPL
 Author: Sudar
-Version: 2.4
+Version: 2.5
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -32,6 +32,7 @@ Text Domain: easy-retweet
 2011-01-23 - v2.2 - Fixed issue with permalink for official twitter button.
 2011-01-23 - v2.3 - Added Brazilian Portuguese translations.
 2011-05-11 - v2.4 - Added German translations.
+2011-05-20 - v2.5 - Added support for twitter intents and bit.ly pro accounts
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -308,6 +309,14 @@ class EasyRetweet {
                         <td>
                             <p><label><input type="text" name="retweet-style[apikey]" value="<?php echo $options['apikey']; ?>" /></label></p>
                             <p><?php _e("You can get it from <a href = 'http://bit.ly/account/' target = '_blank'>http://bit.ly/account/</a>.", 'easy-retweet');?></p>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Bit.ly Domain', 'easy-retweet' ); ?></th>
+                        <td>
+                            <p><label><input type="text" name="retweet-style[domain]" value="<?php echo $options['domain']; ?>" /></label></p>
+                            <p><?php _e("If you are using a pro account.", 'easy-retweet');?></p>
                         </td>
                     </tr>
 
@@ -723,14 +732,19 @@ function loaded(){
 
 		elem.innerHTML = "<span>" + RetweetJS.link_text + "</span>";
 		elem.title = "";
-		elem.href = "http://twitter.com/home?status=" +
+		elem.href = "http://twitter.com/intent/tweet?text=" +
 			encodeURIComponent(RetweetJS.prefix + origText + " http://bit.ly/");
 
+<?php
+    if ($options['domain'] != '') {
+        $domain = ", 'domain':'" . $options['domain'] . "'";
+    }
+?>
 		if ( urlElem[ href ] ) {
 			urlElem[ href ].push( elem );
 		} else {
 			urlElem[ href ] = [ elem ];
-			BitlyClient.call('shorten', {'longUrl':href, 'history':'1'}, 'BitlyCB.shortenResponse');
+			BitlyClient.call('shorten', {'longUrl':href, 'history':'1' <?php echo $domain;?>}, 'BitlyCB.shortenResponse');
 		}
 	}
 

@@ -4,7 +4,7 @@ Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 Tested up to: 3.1.2
-Stable tag: 2.4
+Stable tag: 2.5
 	
 Adds a Retweet button to your WordPress posts
 
@@ -141,6 +141,9 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 ###v2.4 (2011-05-11)
 *   Added German translations
+
+###v2.5 (2011-05-20)
+*   Added support for twitter intents and bit.ly pro accounts
 
 ==Readme Generator== 
 
