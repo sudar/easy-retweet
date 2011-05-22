@@ -6,7 +6,7 @@ Description: Adds a Retweet button to your WordPress posts.
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 License: GPL
 Author: Sudar
-Version: 2.5
+Version: 2.6
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -33,6 +33,7 @@ Text Domain: easy-retweet
 2011-01-23 - v2.3 - Added Brazilian Portuguese translations.
 2011-05-11 - v2.4 - Added German translations.
 2011-05-20 - v2.5 - Added support for twitter intents and bit.ly pro accounts
+2011-05-21 - v2.6 - Reworded the domain text in the settings page.
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -316,7 +317,7 @@ class EasyRetweet {
                         <th scope="row"><?php _e( 'Bit.ly Domain', 'easy-retweet' ); ?></th>
                         <td>
                             <p><label><input type="text" name="retweet-style[domain]" value="<?php echo $options['domain']; ?>" /></label></p>
-                            <p><?php _e("If you are using a pro account.", 'easy-retweet');?></p>
+                            <p><?php _e("Either bit.ly (default) or j.mp.", 'easy-retweet');?></p>
                         </td>
                     </tr>
 
