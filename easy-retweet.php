@@ -6,7 +6,7 @@ Description: Adds a Retweet button to your WordPress posts.
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 License: GPL
 Author: Sudar
-Version: 2.6
+Version: 2.7
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 
@@ -34,6 +34,7 @@ Text Domain: easy-retweet
 2011-05-11 - v2.4 - Added German translations.
 2011-05-20 - v2.5 - Added support for twitter intents and bit.ly pro accounts
 2011-05-21 - v2.6 - Reworded the domain text in the settings page.
+2011-09-05 - v2.7 - Enabled custom Bit.ly Pro domains (By Michelle McGinnis) and added Bulgarian and Lithuanian translations
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -317,7 +318,7 @@ class EasyRetweet {
                         <th scope="row"><?php _e( 'Bit.ly Domain', 'easy-retweet' ); ?></th>
                         <td>
                             <p><label><input type="text" name="retweet-style[domain]" value="<?php echo $options['domain']; ?>" /></label></p>
-                            <p><?php _e("Either bit.ly (default) or j.mp.", 'easy-retweet');?></p>
+                            <p><?php _e("Either bit.ly (default), your custom bit.ly Pro domain, or j.mp.", 'easy-retweet');?></p>
                         </td>
                     </tr>
 
@@ -734,7 +735,7 @@ function loaded(){
 		elem.innerHTML = "<span>" + RetweetJS.link_text + "</span>";
 		elem.title = "";
 		elem.href = "http://twitter.com/intent/tweet?text=" +
-			encodeURIComponent(RetweetJS.prefix + origText + " http://bit.ly/");
+			encodeURIComponent(RetweetJS.prefix + origText + " http://<?php if ($options['domain'] != '') { echo $options['domain']; } else { echo 'bit.ly'; } ?>/");
 
 <?php
     if ($options['domain'] != '') {
