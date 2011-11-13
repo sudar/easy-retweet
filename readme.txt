@@ -4,7 +4,7 @@ Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 Tested up to: 3.2.1
-Stable tag: 2.7
+Stable tag: 2.8
 	
 Adds a Retweet button to your WordPress posts
 
@@ -38,7 +38,8 @@ You can also place the shortcode [easy-retweet] anywhere in your post. This shor
 *   German (Thanks Jenny Beelens of [professionaltranslation.com][4])
 *   Bulgarian (Thanks Dimitar Kolevski of [Web Geek][5])
 *   Lithuanian (Thanks Nata of [Web Hub][6])
-
+*   French (Thanks Brian Flores of [InMotion Hosting][7])
+   
 The pot file is available with the Plugin. If you are willing to do translation for the Plugin, use the pot file to create the .po files for your language and let me know. I will add it to the Plugin after giving credit to you.
 
 ### Support
@@ -51,6 +52,7 @@ Support for the Plugin is available from the [Plugin's home page][2]. If you hav
  [4]: http://www.professionaltranslation.com
  [5]: http://webhostinggeeks.com/
  [6]: http://www.webhostinghub.com/
+ [7]: http://www.inmotionhosting.com/
 
 == Installation ==
 
@@ -154,6 +156,9 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 ###v2.7 (2011-09-05)
 *   Enabled custom Bit.ly Pro domains (By Michelle McGinnis) and added Bulgarian and Lithuanian translations
+
+###v2.8 (2011-11-13)
+*   Added French translations
 
 ==Readme Generator== 
 
