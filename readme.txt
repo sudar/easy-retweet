@@ -3,8 +3,8 @@ Contributors: sudar
 Tags: posts, Twitter, tweet, Retweet
 Requires at least: 2.8
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
-Tested up to: 3.3.1
-Stable tag: 2.9
+Tested up to: 3.4.1
+Stable tag: 2.9.1
 	
 Adds a Retweet button to your WordPress posts
 
@@ -40,6 +40,7 @@ You can also place the shortcode [easy-retweet] anywhere in your post. This shor
 *   Lithuanian (Thanks Nata of [Web Hub][6])
 *   French (Thanks Brian Flores of [InMotion Hosting][7])
 *   Romanian (Thanks Alexander Ovsov of [Web Geek Sciense][8])
+*   Hindi (Thanks Love Chandel)
    
 The pot file is available with the Plugin. If you are willing to do translation for the Plugin, use the pot file to create the .po files for your language and let me know. I will add it to the Plugin after giving credit to you.
 
@@ -164,6 +165,9 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 ###v2.9 (2012-03-13)
 *   Added translation support for Romanian 
+
+###v2.9.1 (2012-07-23) (Dev time: 0.5 hour)
+* Added translation support for Hindi
 
 ==Readme Generator== 
 
