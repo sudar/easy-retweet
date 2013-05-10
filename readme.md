@@ -1,18 +1,18 @@
-=== Easy Retweet ===
-Contributors: sudar 
-Tags: posts, Twitter, tweet, Retweet
-Requires at least: 2.8
-Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
-Tested up to: 3.4.2
-Stable tag: 2.9.2
+# Easy Retweet #
+**Contributors:** sudar  
+**Tags:** posts, Twitter, tweet, Retweet  
+**Requires at least:** 2.8  
+**Donate Link:** http://sudarmuthu.com/if-you-wanna-thank-me  
+**Tested up to:** 3.5.1  
+**Stable tag:** 2.9.2  
 	
 Adds a Retweet button to your WordPress posts
 
-== Description ==
+## Description ##
 
 Easy ReTweet is a WordPress Plugin, which let's you add retweet or Tweet this buttons for your WordPress posts, together with the retweet count.
 
-###Usage###
+### Usage ###
 
 There are three ways you can add the retweet button. Automatic way, manual way and using shortcodes
 
@@ -24,7 +24,7 @@ Install the Plugin and choose the type and position of the button from the Plugi
 
 If you want more control over the way the button should be positioned, then you can manually call the button using the following code.
 
-if (function_exists('easy_retweet_button')) echo easy_retweet_button();
+`if (function_exists('easy_retweet_button')) echo easy_retweet_button();`
 
 #### Using shortcodes
 
@@ -58,12 +58,13 @@ Support for the Plugin is available from the [Plugin's home page][2]. If you hav
  [7]: http://www.inmotionhosting.com/
  [8]: http://webhostinggeeks.com/
 
-== Installation ==
+## Installation ##
 
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
 
-== Screenshots ==
-1. Genral Settings page
+## Screenshots ##
+
+1. General Settings page
 
 2. Bit.ly Settings page
 
@@ -71,7 +72,7 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 4. Enable/Disable button in the write post/page page
 
-== Changelog ==
+## Changelog ##
 
 
 ###v0.1 (2009-07-13)
@@ -173,6 +174,6 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 ###v2.9.2 (2012-11-07) (Dev time: 0.5 hour)
 * Added translation support for Irish
 
-==Readme Generator== 
+## Readme Generator ##
 
 This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.
