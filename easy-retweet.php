@@ -1,14 +1,16 @@
 <?php
 /**
 Plugin Name: Easy Retweet
+Plugin Script: easy-retweet.php
 Plugin URI: http://sudarmuthu.com/wordpress/easy-retweet
 Description: Adds a Retweet button to your WordPress posts.
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 License: GPL
 Author: Sudar
-Version: 2.9.2
+Version: 3.0
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
+Domain Path: languages/
 
 === RELEASE NOTES ===
 2009-07-13 - v0.1 - Initial Release
@@ -39,6 +41,8 @@ Text Domain: easy-retweet
 2012-03-13 - v2.9 - Added translation support for Romanian 
 2012-07-23 - v2.9.1 - Added translation support for Hindi
 2012-11-07 - v2.9.2 - Added translation support for Irish
+2013-06-03 - v3.0 - (Dev time: 1 hour)
+                  - Added support for Google Analytics tracking
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
@@ -84,6 +88,7 @@ class EasyRetweet {
 
         // Enqueue the script
         add_action('template_redirect', array(&$this, 'add_script'));
+        add_action( 'wp_head', array( &$this, 'add_twitter_js' ) );
 
         // Register filters
         add_filter('the_content', array(&$this, 'append_retweet_button') , 99);
@@ -122,6 +127,17 @@ class EasyRetweet {
 
         if ($options['button-type'] == 'bit.ly') {
             wp_enqueue_script('retweet', get_option('home') . '/?retweetjs');
+        }
+    }
+
+    function add_twitter_js() {
+        // Enqueue the script only if the button type is bit.ly
+        $options = get_option('retweet-style');
+
+        if ($options['button-type'] != 'bit.ly') {
+?>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<?php
         }
     }
 
@@ -291,12 +307,68 @@ class EasyRetweet {
                     <tr valign="top">
                         <th scope="row"><?php _e( 'Button type', 'easy-retweet' ); ?></th>
                         <td>
-                            <p><label><input type="radio" name="retweet-style[button-type]" value="bit.ly" <?php checked("bit.ly", $options['button-type']); ?> /> <?php _e("Bit.ly hit count button", 'easy-retweet');?></label></p>
                             <p><label><input type="radio" name="retweet-style[button-type]" value="twitter" <?php checked("twitter", $options['button-type']); ?> /> <?php _e("Official Twitter button", 'easy-retweet');?></label></p>
+                            <p><label><input type="radio" name="retweet-style[button-type]" value="bit.ly" <?php checked("bit.ly", $options['button-type']); ?> /> <?php _e("Bit.ly hit count button", 'easy-retweet');?></label></p>
                         </td>
                     </tr>
 
                 </table>
+
+                <div id="twitter-button">
+                    <h3><?php _e('Twitter Button', 'easy-retweet'); ?></h3>
+
+                    <table class="form-table">
+
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Button Style', 'easy-retweet' ); ?></th>
+                        <td>
+                            <p><label><input type="radio" name="retweet-style[t-count]" value="vertical" <?php checked("vertical", $options['t-count']); ?> /> <img src ="<?php echo plugin_dir_url(__FILE__); ?>images/t-vert.png" /> (<?php _e("Vertical count", 'easy-retweet');?>)</label></p>
+                            <p><label><input type="radio" name="retweet-style[t-count]" value="horizontal" <?php checked("horizontal", $options['t-count']); ?> /> <img src ="<?php echo plugin_dir_url(__FILE__); ?>images/t-hori.png" /> (<?php _e("Horizontal count", 'easy-retweet');?>)</label></p>
+                            <p><label><input type="radio" name="retweet-style[t-count]" value="none" <?php checked("none", $options['t-count']); ?> /> <img src ="<?php echo plugin_dir_url(__FILE__); ?>images/t-no.png" /> (<?php _e("No count", 'easy-retweet');?>)</label></p>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Recommended Twitter account', 'easy-retweet' ); ?></th>
+                        <td>
+                            <p><label><input type="text" name="retweet-style[account1]" value="<?php echo $options['account1']; ?>" /></label></p>
+                            <p><?php _e("Twitter account for users to follow after they share content from your website. This account could include your own, or that of a contributor or a partner.", 'easy-retweet');?></p>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Additional styles', 'easy-retweet' ); ?></th>
+                        <td>
+                            <p><label><input type="text" name="retweet-style[t-style]" value="<?php echo $options['t-style']; ?>" /></label></p>
+                            <p><?php _e("eg: <code>float: left; margin-right: 10px;</code>.", 'easy-retweet');?></p>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Google Analytics Tracking', 'easy-retweet' ); ?></th>
+                        <td>
+                            <p> <input type="text" name="retweet-style[utm_campaign]" value="<?php echo $options['utm_campaign']; ?>" /> <label for = "retweet-style[utm_campaign]">Campaign</label></p>
+                            <p> <input type="text" name="retweet-style[utm_source]" value="<?php echo $options['utm_source']; ?>" /> <label for = "retweet-style[utm_source]">Source</label></p>
+                            <p> <input type="text" name="retweet-style[utm_medium]" value="<?php echo $options['utm_medium']; ?>" /> <label for = "retweet-style[utm_medium]">Medium</label></p>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row"><?php _e( 'Language', 'easy-retweet' ); ?></th>
+                        <td>
+                            <select name="retweet-style[t-language]">
+                                <option value="en" <?php selected("en", $options['t-language']); ?>><?php _e('English', 'easy-retweet' ); ?></option>
+                                <option value="fr" <?php selected("fr", $options['t-language']); ?>><?php _e('French', 'easy-retweet' ); ?></option>
+                                <option value="de" <?php selected("de", $options['t-language']); ?>><?php _e('German', 'easy-retweet' ); ?></option>
+                                <option value="es" <?php selected("es", $options['t-language']); ?>><?php _e('Spanish', 'easy-retweet' ); ?></option>
+                                <option value="ja" <?php selected("ja", $options['t-language']); ?>><?php _e('Japanese', 'easy-retweet' ); ?></option>
+                            </select>
+                            <p><?php _e("This is the language that the button will render in on your website.", 'easy-retweet');?></p>
+                        </td>
+                    </tr>
+
+                </table>
+                </div>
 
                 <div id="bitly-button">
                     <h3><?php _e('Bit.ly Button', 'easy-retweet'); ?></h3>
@@ -355,53 +427,6 @@ class EasyRetweet {
                         <td>
                             <p><label><input type="text" name="retweet-style[linkattr]" value="<?php echo $options['linkattr']; ?>" /></label></p>
                             <p><?php _e("eg: <code>rel='nofollow'</code> or <code>target = '_blank'</code>", 'easy-retweet');?></p>
-                        </td>
-                    </tr>
-
-                </table>
-                </div>
-
-                <div id="twitter-button">
-                    <h3><?php _e('Twitter Button', 'easy-retweet'); ?></h3>
-
-                    <table class="form-table">
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Button Style', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="radio" name="retweet-style[t-count]" value="vertical" <?php checked("vertical", $options['t-count']); ?> /> <img src ="<?php echo plugin_dir_url(__FILE__); ?>images/t-vert.png" /> (<?php _e("Vertical count", 'easy-retweet');?>)</label></p>
-                            <p><label><input type="radio" name="retweet-style[t-count]" value="horizontal" <?php checked("horizontal", $options['t-count']); ?> /> <img src ="<?php echo plugin_dir_url(__FILE__); ?>images/t-hori.png" /> (<?php _e("Horizontal count", 'easy-retweet');?>)</label></p>
-                            <p><label><input type="radio" name="retweet-style[t-count]" value="none" <?php checked("none", $options['t-count']); ?> /> <img src ="<?php echo plugin_dir_url(__FILE__); ?>images/t-no.png" /> (<?php _e("No count", 'easy-retweet');?>)</label></p>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Recommended Twitter account', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="text" name="retweet-style[account1]" value="<?php echo $options['account1']; ?>" /></label></p>
-                            <p><?php _e("Twitter account for users to follow after they share content from your website. This account could include your own, or that of a contributor or a partner.", 'easy-retweet');?></p>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Additional styles', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="text" name="retweet-style[t-style]" value="<?php echo $options['t-style']; ?>" /></label></p>
-                            <p><?php _e("eg: <code>float: left; margin-right: 10px;</code>.", 'easy-retweet');?></p>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Language', 'easy-retweet' ); ?></th>
-                        <td>
-                            <select name="retweet-style[t-language]">
-                                <option value="en" <?php selected("en", $options['t-language']); ?>><?php _e('English', 'easy-retweet' ); ?></option>
-                                <option value="fr" <?php selected("fr", $options['t-language']); ?>><?php _e('French', 'easy-retweet' ); ?></option>
-                                <option value="de" <?php selected("de", $options['t-language']); ?>><?php _e('German', 'easy-retweet' ); ?></option>
-                                <option value="es" <?php selected("es", $options['t-language']); ?>><?php _e('Spanish', 'easy-retweet' ); ?></option>
-                                <option value="ja" <?php selected("ja", $options['t-language']); ?>><?php _e('Japanese', 'easy-retweet' ); ?></option>
-                            </select>
-                            <p><?php _e("This is the language that the button will render in on your website.", 'easy-retweet');?></p>
                         </td>
                     </tr>
 
@@ -552,17 +577,37 @@ function easy_retweet_button($display = true) {
         } else {
             //Twitter button
 
-            $t_count  = $options['t-count'];
-            $account1 = $options['account1'];
-            $lang = $options['t-language'];
-            $style = $options['t-style'];
+            $t_count      = $options['t-count'];
+            $account1     = $options['account1'];
+            $lang         = $options['t-language'];
+            $style        = $options['t-style'];
+
+            $utm_campaign = $options['utm_campaign'];
+            $utm_source   = $options['utm_source'];
+            $utm_medium   = $options['utm_medium'];
 
             if ($lang != '' && $lang != 'en') {
                 $lang = "data-lang='$lang'";
             }
 
+            if ( $utm_campaign != '' && $utm_source != '' && $utm_medium != '' ) {
+                if ( strpos( $permalink, '?' ) ) {
+                    $url = "$permalink&utm_campaign=$utm_campaign&utm_source=$utm_source&$utm_medium=$utm_medium"; 
+                } else {
+                    $url = "$permalink?utm_campaign=$utm_campaign&utm_source=$utm_source&$utm_medium=$utm_medium"; 
+                }
+            } else {
+                $url = $permalink;
+            }
+
             $output = <<<EOD
-            <a href="http://twitter.com/share" class="twitter-share-button" data-count="$t_count" data-text="$custom_retweet_text" data-via="$account1" data-url="$permalink" $lang>Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+            <a href="http://twitter.com/share" class="twitter-share-button" 
+                data-count="$t_count" 
+                data-text="$custom_retweet_text" 
+                data-via="$account1" 
+                data-url="$url" 
+                data-counturl="$permalink" 
+                $lang>Tweet</a>
 EOD;
 
             if ($style != '') {
