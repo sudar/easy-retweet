@@ -7,7 +7,7 @@ Description: Adds a Retweet button to your WordPress posts.
 Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
 License: GPL
 Author: Sudar
-Version: 3.0
+Version: 3.0.1
 Author URI: http://sudarmuthu.com/
 Text Domain: easy-retweet
 Domain Path: languages/
@@ -43,6 +43,8 @@ Domain Path: languages/
 2012-11-07 - v2.9.2 - Added translation support for Irish
 2013-06-03 - v3.0 - (Dev time: 1 hour)
                   - Added support for Google Analytics tracking
+2013-06-11 - v3.0.1 - (Dev time: 0.5 hour)
+                  - Added Danish translations  
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
