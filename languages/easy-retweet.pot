@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Easy Retweet package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy Retweet 3.0\n"
+"Project-Id-Version: Easy Retweet 3.0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/easy-retweet\n"
-"POT-Creation-Date: 2013-06-03 14:34:16+00:00\n"
+"POT-Creation-Date: 2013-06-11 13:28:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,284 +12,284 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#. #-#-#-#-#  easy-retweet.pot (Easy Retweet 3.0)  #-#-#-#-#
+#. #-#-#-#-#  easy-retweet.pot (Easy Retweet 3.0.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: easy-retweet.php:110
+#: easy-retweet.php:112
 msgid "Easy Retweet"
 msgstr ""
 
-#: easy-retweet.php:169 easy-retweet.php:171
+#: easy-retweet.php:171 easy-retweet.php:173
 msgid "Easy Retweet Button"
 msgstr ""
 
-#: easy-retweet.php:197
+#: easy-retweet.php:199
 msgid "Enabled"
 msgstr ""
 
-#: easy-retweet.php:198
+#: easy-retweet.php:200
 msgid "Disabled"
 msgstr ""
 
-#: easy-retweet.php:201
+#: easy-retweet.php:203
 msgid "Custom Retweet Text:"
 msgstr ""
 
-#: easy-retweet.php:204
+#: easy-retweet.php:206
 msgid "If left blank, the post title will be used."
 msgstr ""
 
-#: easy-retweet.php:252
+#: easy-retweet.php:254
 msgid "Settings"
 msgstr ""
 
-#: easy-retweet.php:262
+#: easy-retweet.php:264
 msgid "plugin"
 msgstr ""
 
-#: easy-retweet.php:262
+#: easy-retweet.php:264
 msgid "Version"
 msgstr ""
 
-#: easy-retweet.php:262
+#: easy-retweet.php:264
 msgid "by"
 msgstr ""
 
-#: easy-retweet.php:272
+#: easy-retweet.php:274
 msgid "Easy Retweet Settings"
 msgstr ""
 
-#: easy-retweet.php:285
+#: easy-retweet.php:287
 msgid "General Settings"
 msgstr ""
 
-#: easy-retweet.php:288
+#: easy-retweet.php:290
 msgid "Display"
 msgstr ""
 
-#: easy-retweet.php:290
+#: easy-retweet.php:292
 msgid "Display the button on pages"
 msgstr ""
 
-#: easy-retweet.php:291
+#: easy-retweet.php:293
 msgid "Display the button on archive pages"
 msgstr ""
 
-#: easy-retweet.php:292
+#: easy-retweet.php:294
 msgid "Display the button in home page"
 msgstr ""
 
-#: easy-retweet.php:297
+#: easy-retweet.php:299
 msgid "Position"
 msgstr ""
 
-#: easy-retweet.php:299
+#: easy-retweet.php:301
 msgid "Before the content of your post"
 msgstr ""
 
-#: easy-retweet.php:300
+#: easy-retweet.php:302
 msgid "After the content of your post"
 msgstr ""
 
-#: easy-retweet.php:301
+#: easy-retweet.php:303
 msgid "Before AND After the content of your post"
 msgstr ""
 
-#: easy-retweet.php:302
+#: easy-retweet.php:304
 msgid "Manually call the retweet button"
 msgstr ""
 
-#: easy-retweet.php:303
+#: easy-retweet.php:305
 msgid ""
 "You can manually call the <code>easy_retweet_button</code> function. E.g. "
 "<code>if (function_exists('easy_retweet_button')) echo easy_retweet_button"
 "();."
 msgstr ""
 
-#: easy-retweet.php:308
+#: easy-retweet.php:310
 msgid "Button type"
 msgstr ""
 
-#: easy-retweet.php:310
+#: easy-retweet.php:312
 msgid "Official Twitter button"
 msgstr ""
 
-#: easy-retweet.php:311
+#: easy-retweet.php:313
 msgid "Bit.ly hit count button"
 msgstr ""
 
-#: easy-retweet.php:318
+#: easy-retweet.php:320
 msgid "Twitter Button"
 msgstr ""
 
-#: easy-retweet.php:323
+#: easy-retweet.php:325
 msgid "Button Style"
 msgstr ""
 
-#: easy-retweet.php:325
+#: easy-retweet.php:327
 msgid "Vertical count"
 msgstr ""
 
-#: easy-retweet.php:326
+#: easy-retweet.php:328
 msgid "Horizontal count"
 msgstr ""
 
-#: easy-retweet.php:327
+#: easy-retweet.php:329
 msgid "No count"
 msgstr ""
 
-#: easy-retweet.php:332
+#: easy-retweet.php:334
 msgid "Recommended Twitter account"
 msgstr ""
 
-#: easy-retweet.php:335
+#: easy-retweet.php:337
 msgid ""
 "Twitter account for users to follow after they share content from your "
 "website. This account could include your own, or that of a contributor or a "
 "partner."
 msgstr ""
 
-#: easy-retweet.php:340
+#: easy-retweet.php:342
 msgid "Additional styles"
 msgstr ""
 
-#: easy-retweet.php:343
+#: easy-retweet.php:345
 msgid "eg: <code>float: left; margin-right: 10px;</code>."
 msgstr ""
 
-#: easy-retweet.php:348
+#: easy-retweet.php:350
 msgid "Google Analytics Tracking"
 msgstr ""
 
-#: easy-retweet.php:357
+#: easy-retweet.php:359
 msgid "Language"
 msgstr ""
 
-#: easy-retweet.php:360
+#: easy-retweet.php:362
 msgid "English"
 msgstr ""
 
-#: easy-retweet.php:361
+#: easy-retweet.php:363
 msgid "French"
 msgstr ""
 
-#: easy-retweet.php:362
+#: easy-retweet.php:364
 msgid "German"
 msgstr ""
 
-#: easy-retweet.php:363
+#: easy-retweet.php:365
 msgid "Spanish"
 msgstr ""
 
-#: easy-retweet.php:364
+#: easy-retweet.php:366
 msgid "Japanese"
 msgstr ""
 
-#: easy-retweet.php:366
+#: easy-retweet.php:368
 msgid "This is the language that the button will render in on your website."
 msgstr ""
 
-#: easy-retweet.php:374
+#: easy-retweet.php:376
 msgid "Bit.ly Button"
 msgstr ""
 
-#: easy-retweet.php:378
+#: easy-retweet.php:380
 msgid "Bit.ly Username"
 msgstr ""
 
-#: easy-retweet.php:381
+#: easy-retweet.php:383
 msgid "A default account will be used if left blank."
 msgstr ""
 
-#: easy-retweet.php:386
+#: easy-retweet.php:388
 msgid "Bit.ly API Key"
 msgstr ""
 
-#: easy-retweet.php:389
+#: easy-retweet.php:391
 msgid ""
 "You can get it from <a href = 'http://bit.ly/account/' target = "
 "'_blank'>http://bit.ly/account/</a>."
 msgstr ""
 
-#: easy-retweet.php:394
+#: easy-retweet.php:396
 msgid "Bit.ly Domain"
 msgstr ""
 
-#: easy-retweet.php:397
+#: easy-retweet.php:399
 msgid "Either bit.ly (default), your custom bit.ly Pro domain, or j.mp."
 msgstr ""
 
-#: easy-retweet.php:402
+#: easy-retweet.php:404
 msgid "Button style"
 msgstr ""
 
-#: easy-retweet.php:404
+#: easy-retweet.php:406
 msgid "Vertical button"
 msgstr ""
 
-#: easy-retweet.php:405
+#: easy-retweet.php:407
 msgid "Horizontal button"
 msgstr ""
 
-#: easy-retweet.php:410
+#: easy-retweet.php:412
 msgid "Text"
 msgstr ""
 
-#: easy-retweet.php:413
+#: easy-retweet.php:415
 msgid "The text that you enter here will be displayed in the button."
 msgstr ""
 
-#: easy-retweet.php:418
+#: easy-retweet.php:420
 msgid "Message Prefix"
 msgstr ""
 
-#: easy-retweet.php:421
+#: easy-retweet.php:423
 msgid ""
 "The text that you want to be added in front of each twitter message. eg: "
 "<code>RT: @sudarmuthu</code>"
 msgstr ""
 
-#: easy-retweet.php:426
+#: easy-retweet.php:428
 msgid "Link Attributes"
 msgstr ""
 
-#: easy-retweet.php:429
+#: easy-retweet.php:431
 msgid "eg: <code>rel='nofollow'</code> or <code>target = '_blank'</code>"
 msgstr ""
 
-#: easy-retweet.php:437
+#: easy-retweet.php:439
 msgid "Save Changes"
 msgstr ""
 
-#: easy-retweet.php:441
+#: easy-retweet.php:443
 msgid "Support"
 msgstr ""
 
-#: easy-retweet.php:442
+#: easy-retweet.php:444
 msgid ""
 "If you have any questions/comments/feedback about the Plugin then post a "
 "comment in the <a target=\"_blank\" href = \"http://sudarmuthu.com/wordpress/"
 "easy-retweet\">Plugins homepage</a>."
 msgstr ""
 
-#: easy-retweet.php:443
+#: easy-retweet.php:445
 msgid "If you like the Plugin, then consider doing one of the following."
 msgstr ""
 
-#: easy-retweet.php:445
+#: easy-retweet.php:447
 msgid "Write a blog post about the Plugin."
 msgstr ""
 
-#: easy-retweet.php:446
+#: easy-retweet.php:448
 msgid " about it."
 msgstr ""
 
-#: easy-retweet.php:447
+#: easy-retweet.php:449
 msgid ""
 "Give a <a href = \"http://wordpress.org/extend/plugins/easy-retweet/\" "
 "target=\"_blank\">good rating</a>."
 msgstr ""
 
-#: easy-retweet.php:448
+#: easy-retweet.php:450
 msgid ""
 "Say <a href = \"http://sudarmuthu.com/if-you-wanna-thank-me\" target=\"_blank"
 "\">thank you</a>."
