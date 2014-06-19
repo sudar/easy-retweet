@@ -105,6 +105,9 @@
 ### v3.0.1 (2013-06-11) - (Dev time: 0.5 hour) ###
 - Added Danish translations
 
+### v3.0.2 (2014-06-19) - (Dev time: 0.5 hour) ###
+- Tweak: Removed old PHP4 compatible code
+
 ## Readme Generator ##
 
 This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.

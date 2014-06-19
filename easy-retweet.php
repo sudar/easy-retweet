@@ -495,15 +495,10 @@ class EasyRetweet {
     /**
      * Short code handler
      * @param <type> $attr
-     * @param <type> $content 
+     * @param <type> $content
      */
     function shortcode_handler($attr, $content) {
         return easy_retweet_button(false);
-    }
-
-    // PHP4 compatibility
-    function EasyRetweet() {
-        $this->__construct();
     }
 }
 
