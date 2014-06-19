@@ -3,9 +3,9 @@
 **Tags:** posts, Twitter, tweet, Retweet  
 **Requires at least:** 2.8  
 **Donate Link:** http://sudarmuthu.com/if-you-wanna-thank-me  
-**Tested up to:** 3.5.1  
-**Stable tag:** 3.0.1  
-	
+**Tested up to:** 3.9.1  
+**Stable tag:** 3.0.2  
+
 Adds a Retweet button to your WordPress posts
 
 ## Description ##
@@ -77,7 +77,7 @@ The Plugin currently has translations for the following languages.
 *   Hindi (Thanks Love Chandel)
 *   Irish (Thanks Vikas Arora)
 *   Danish (Thanks Jorgen)
-   
+
 The pot file is available with the Plugin. If you are willing to do translation for the Plugin, use the pot file to create the .po files for your language and let me know. I will add it to the Plugin after giving credit to you.
 
 ## Credits ##
