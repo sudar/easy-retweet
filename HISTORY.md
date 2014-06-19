@@ -107,6 +107,7 @@
 
 ### v3.0.2 (2014-06-19) - (Dev time: 0.5 hour) ###
 - Tweak: Removed old PHP4 compatible code
+- Tweak: Make it compatible with Easy Digital Downloads plugin. (Issue #5)
 
 ## Readme Generator ##
 

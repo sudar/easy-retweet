@@ -516,7 +516,15 @@ function easy_retweet_button($display = true) {
 
     if ($custom_retweet_text == '') {
         // if the custom text message is empty default to post title
+
+        // Easy Digital Downloads tries to filter the title. Check https://github.com/sudar/easy-retweet/issues/5
+        if ( class_exists( 'Easy_Digital_Downloads' ) ) {
+            remove_filter( 'the_title', 'edd_microdata_title', 10, 2 );
+        }
         $custom_retweet_text = get_the_title($post->ID);
+        if ( class_exists( 'Easy_Digital_Downloads' ) ) {
+            add_filter( 'the_title', 'edd_microdata_title', 10, 2 );
+        }
     }
 
     $enable_retweet = get_post_meta($post->ID, 'enable_retweet_button', true);
