@@ -13,38 +13,7 @@ Text Domain: easy-retweet
 Domain Path: languages/
 
 === RELEASE NOTES ===
-2009-07-13 - v0.1 - Initial Release
-2009-07-20 - v0.2 - Added option to add/remove button in archive page.
-2009-07-21 - v0.3 - Added support for translation.
-2009-07-22 - v0.4 - Added option to add/remove button in home page.
-2009-07-24 - v0.5 - Added option to change the text which is displayed in the button.
-2009-07-26 - v0.6 - Prevented the script file from loading in Admin pages.
-2009-07-27 - v0.7 - Added an option to specify prefix for the Twitter message.
-2009-07-28 - v0.8 - Added support for shortcode to retweet button.
-2009-07-31 - v0.9 - Fixed an issue with generated JavaScript. Thanks Dougal (http://dougal.gunters.org/).
-2009-08-02 - v1.0 - Added an option to specify bit.ly username, API Key and also other attributes for the link.
-2009-08-05 - v1.1 - Generating the js file from php to fix issues wiht bit.ly key. The urls generated will appear in bit.ly account.
-2009-08-18 - v1.2 - Removed hard coded Plugin path to make it work even if the wp-content path is changed.
-2009-08-19 - v1.3 - Added the ability to enable/disable button on per page/post basics.
-2009-10-15 - v1.4 - Added the ability to enable/disable button on per page/post basics, event if template function is used.
-2010-01-02 - v1.5 - Ability to specify custom message for twitter instead of the post title. Also added Belorussian Translations (Thanks FatCow).
-2010-03-27 - v1.6 - Added Spanish Translations (Thanks Carlos Varela).
-2010-11-29 - v2.0 - Added support for official twitter button.
-2010-12-05 - v2.1 - Fixed issue with the support for official twitter button.
-2011-01-23 - v2.2 - Fixed issue with permalink for official twitter button.
-2011-01-23 - v2.3 - Added Brazilian Portuguese translations.
-2011-05-11 - v2.4 - Added German translations.
-2011-05-20 - v2.5 - Added support for twitter intents and bit.ly pro accounts
-2011-05-21 - v2.6 - Reworded the domain text in the settings page.
-2011-09-05 - v2.7 - Enabled custom Bit.ly Pro domains (By Michelle McGinnis) and added Bulgarian and Lithuanian translations
-2011-11-13 - v2.8 - Added French translations.
-2012-03-13 - v2.9 - Added translation support for Romanian 
-2012-07-23 - v2.9.1 - Added translation support for Hindi
-2012-11-07 - v2.9.2 - Added translation support for Irish
-2013-06-03 - v3.0 - (Dev time: 1 hour)
-                  - Added support for Google Analytics tracking
-2013-06-11 - v3.0.1 - (Dev time: 0.5 hour)
-                  - Added Danish translations  
+Check readme file for full release notes
 
 Uses the script created by John Resig http://ejohn.org/blog/retweet/
 */
