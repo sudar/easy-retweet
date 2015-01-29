@@ -109,6 +109,14 @@
 - Tweak: Removed old PHP4 compatible code
 - Tweak: Make it compatible with Easy Digital Downloads plugin. (Issue #5)
 
+### v3.0.3 (2015-01-29) - (Dev time: 0.5 hour) ###
+- Fix: utm_medium parameter is not appended to the url properly. (Issue #7)
+
+## Upgrade Notice ##
+
+### v3.0.3 ###
+Fix issue in utm_medium parameter
+
 ## Readme Generator ##
 
 This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.

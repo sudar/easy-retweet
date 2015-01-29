@@ -575,9 +575,9 @@ function easy_retweet_button( $display = true ) {
 
 			if ( $utm_campaign != '' && $utm_source != '' && $utm_medium != '' ) {
 				if ( strpos( $permalink, '?' ) ) {
-					$url = "$permalink&utm_campaign=$utm_campaign&utm_source=$utm_source&$utm_medium=$utm_medium";
+					$url = "$permalink&utm_campaign=$utm_campaign&utm_source=$utm_source&utm_medium=$utm_medium";
 				} else {
-					$url = "$permalink?utm_campaign=$utm_campaign&utm_source=$utm_source&$utm_medium=$utm_medium";
+					$url = "$permalink?utm_campaign=$utm_campaign&utm_source=$utm_source&utm_medium=$utm_medium";
 				}
 			} else {
 				$url = $permalink;
