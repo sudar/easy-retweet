@@ -117,6 +117,3 @@
 ### v3.0.3 ###
 Fix issue in utm_medium parameter
 
-## Readme Generator ##
-
-This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.

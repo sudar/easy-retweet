@@ -3,8 +3,8 @@
 **Tags:** posts, Twitter, tweet, Retweet  
 **Requires at least:** 2.8  
 **Donate Link:** http://sudarmuthu.com/if-you-wanna-thank-me  
-**Tested up to:** 3.9.1  
-**Stable tag:** 3.0.2  
+**Tested up to:** 4.1  
+**Stable tag:** 3.0.3  
 
 Adds a Retweet button to your WordPress posts
 
@@ -98,3 +98,6 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 4. Enable/Disable button in the write post/page page
 
+## Readme Generator ##
+
+This Readme file was generated using <a href = 'http://sudarmuthu.com/wordpress/wp-readme'>wp-readme</a>, which generates readme files for WordPress Plugins.
