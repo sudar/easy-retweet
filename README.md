@@ -3,8 +3,8 @@
 **Tags:** posts, Twitter, tweet, Retweet  
 **Requires at least:** 2.8  
 **Donate Link:** http://sudarmuthu.com/if-you-wanna-thank-me  
-**Tested up to:** 4.1  
-**Stable tag:** 3.0.3  
+**Tested up to:** 4.2.3  
+**Stable tag:** 3.0.4  
 
 Adds a Retweet button to your WordPress posts
 
