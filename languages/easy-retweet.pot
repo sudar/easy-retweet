@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Easy Retweet package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Easy Retweet 3.0.3\n"
+"Project-Id-Version: Easy Retweet 3.0.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/easy-retweet\n"
-"POT-Creation-Date: 2015-01-29 06:23:51+00:00\n"
+"POT-Creation-Date: 2015-07-26 10:49:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#. #-#-#-#-#  easy-retweet.pot (Easy Retweet 3.0.3)  #-#-#-#-#
+#. #-#-#-#-#  easy-retweet.pot (Easy Retweet 3.0.4)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: easy-retweet.php:81
 msgid "Easy Retweet"
