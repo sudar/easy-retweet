@@ -112,8 +112,14 @@
 ### v3.0.3 (2015-01-29) - (Dev time: 0.5 hour) ###
 - Fix: utm_medium parameter is not appended to the url properly. (Issue #7)
 
+### v3.0.4 (2015-07-26) - (Dev time: 0.5 hour) ###
+- Fix: Fixed issue custom retweet text. (Issue #8)
+
 ## Upgrade Notice ##
 
 ### v3.0.3 ###
 Fix issue in utm_medium parameter
+
+### v3.0.4 ###
+Fixed issue custom retweet text.
 

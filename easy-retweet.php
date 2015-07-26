@@ -556,7 +556,7 @@ function easy_retweet_button( $display = true ) {
 				$output .= ' ' . $options['linkattr'] . ' ';
 			}
 
-			$output .= '>$custom_retweet_text</a>';
+			$output .= ">{$custom_retweet_text}</a>";
 		} else {
 			//Twitter button
 
