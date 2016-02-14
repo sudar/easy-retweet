@@ -48,27 +48,27 @@ class EasyRetweet {
 		load_plugin_textdomain( 'easy-retweet', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 		// Register hooks
-		add_action( 'admin_menu', array( &$this, 'register_settings_page' ) );
-		add_action( 'admin_init', array( &$this, 'add_settings' ) );
+		add_action( 'admin_menu', array( $this, 'register_settings_page' ) );
+		add_action( 'admin_init', array( $this, 'add_settings' ) );
 
 		/* Use the admin_menu action to define the custom boxes */
-		add_action( 'admin_menu', array( &$this, 'add_custom_box' ) );
+		add_action( 'admin_menu', array( $this, 'add_custom_box' ) );
 
 		/* Use the save_post action to do something with the data entered */
-		add_action( 'save_post', array( &$this, 'save_postdata' ) );
+		add_action( 'save_post', array( $this, 'save_postdata' ) );
 
 		// Enqueue the script
-		add_action( 'template_redirect', array( &$this, 'add_script' ) );
-		add_action( 'wp_head', array( &$this, 'add_twitter_js' ) );
+		add_action( 'template_redirect', array( $this, 'add_script' ) );
+		add_action( 'wp_head', array( $this, 'add_twitter_js' ) );
 
 		// Register filters
-		add_filter( 'the_content', array( &$this, 'append_retweet_button' ) , 99 );
+		add_filter( 'the_content', array( $this, 'append_retweet_button' ) , 99 );
 
 		// register short code
-		add_shortcode( 'easy-retweet', array( &$this, 'shortcode_handler' ) );
+		add_shortcode( 'easy-retweet', array( $this, 'shortcode_handler' ) );
 
 		$plugin = plugin_basename( __FILE__ );
-		add_filter( "plugin_action_links_$plugin", array( &$this, 'add_action_links' ) );
+		add_filter( "plugin_action_links_$plugin", array( $this, 'add_action_links' ) );
 
 		// for outputing js code
 		$this->deliver_js();
@@ -78,7 +78,7 @@ class EasyRetweet {
 	 * Register the settings page
 	 */
 	function register_settings_page() {
-		add_options_page( __( 'Easy Retweet', 'easy-retweet' ), __( 'Easy Retweet', 'easy-retweet' ), 'manage_options', 'easy-retweet', array( &$this, 'settings_page' ) );
+		add_options_page( __( 'Easy Retweet', 'easy-retweet' ), __( 'Easy Retweet', 'easy-retweet' ), 'manage_options', 'easy-retweet', array( $this, 'settings_page' ) );
 	}
 
 	/**
@@ -141,9 +141,9 @@ class EasyRetweet {
 	function add_custom_box() {
 
 		add_meta_box( 'retweet_enable_button', __( 'Easy Retweet Button', 'easy-retweet' ),
-			array( &$this, 'inner_custom_box' ), 'post', 'side' );
+			array( $this, 'inner_custom_box' ), 'post', 'side' );
 		add_meta_box( 'retweet_enable_button', __( 'Easy Retweet Button', 'easy-retweet' ),
-			array( &$this, 'inner_custom_box' ), 'page', 'side' );
+			array( $this, 'inner_custom_box' ), 'page', 'side' );
 	}
 
 	/**
@@ -426,7 +426,7 @@ class EasyRetweet {
         </div>
 <?php
 		// Display credits in Footer
-		add_action( 'in_admin_footer', array( &$this, 'add_footer_links' ) );
+		add_action( 'in_admin_footer', array( $this, 'add_footer_links' ) );
 	}
 
 	/**

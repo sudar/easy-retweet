@@ -117,6 +117,7 @@
 
 ### v3.1 - In Development ###
 - Fix: Use capability instead of user level
+- Tweak: Removed PHP4 compatible code
 
 ## Upgrade Notice ##
 
