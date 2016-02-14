@@ -115,7 +115,7 @@
 ### v3.0.4 (2015-07-26) - (Dev time: 0.5 hour) ###
 - Fix: Fixed issue custom retweet text. (Issue #8)
 
-### v3.1 - In Development - (Dev time: 1 hour) ###
+### v3.1 - (2016-02-14) - (Dev time: 1 hour) ###
 - New: Add support for latest Twitter buttons
 - New: Removed support for old bit.ly buttons
 - Fix: Fix warnings and add checks for defaults
@@ -123,6 +123,9 @@
 - Tweak: Removed PHP4 compatible code
 
 ## Upgrade Notice ##
+
+### v3.1 ###
+Added support for the latest Twitter button
 
 ### v3.0.3 ###
 Fix issue in utm_medium parameter

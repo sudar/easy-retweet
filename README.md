@@ -1,10 +1,10 @@
 # Easy Retweet #
 **Contributors:** sudar  
 **Tags:** posts, Twitter, tweet, Retweet  
-**Requires at least:** 2.8  
+**Requires at least:** 4.4  
 **Donate Link:** http://sudarmuthu.com/if-you-wanna-thank-me  
-**Tested up to:** 4.2.3  
-**Stable tag:** 3.0.4  
+**Tested up to:** 4.4  
+**Stable tag:** 3.1  
 
 Adds a Tweet button to your WordPress posts
 
