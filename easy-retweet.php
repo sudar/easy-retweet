@@ -294,7 +294,8 @@ class EasyRetweet {
                             <p><label><input type="radio" name="retweet-style[position]" value="after" <?php checked( "after", $options['position'] ); ?> /> <?php _e( "After the content of your post", 'easy-retweet' );?></label></p>
                             <p><label><input type="radio" name="retweet-style[position]" value="both" <?php checked( "both", $options['position'] ); ?> /> <?php _e( "Before AND After the content of your post", 'easy-retweet' );?></label></p>
                             <p><label><input type="radio" name="retweet-style[position]" value="manual" <?php checked( "manual", $options['position'] ); ?> /> <?php _e( "Manually call the retweet button", 'easy-retweet' );?></label></p>
-                            <p><?php _e( "You can manually call the <code>easy_retweet_button</code> function. E.g. <code>if (function_exists('easy_retweet_button')) echo easy_retweet_button();.", 'easy-retweet' ); ?></p>
+							<p><?php _e( 'You can manually call the <code>easy_retweet_button</code> function.', 'easy-retweet' );?></p>
+							<p><?php _e( " E.g. <code>if (function_exists('easy_retweet_button')) echo easy_retweet_button();</code>", 'easy-retweet' ); ?></p>
                         </td>
                     </tr>
 
@@ -334,7 +335,7 @@ class EasyRetweet {
                         <th scope="row"><?php _e( 'Additional styles', 'easy-retweet' ); ?></th>
                         <td>
                             <p><label><input type="text" name="retweet-style[t-style]" value="<?php echo $options['t-style']; ?>" /></label></p>
-                            <p><?php _e( "eg: <code>float: left; margin-right: 10px;</code>.", 'easy-retweet' );?></p>
+                            <p><?php _e( "eg: <code>float: left; margin-right: 10px;</code>", 'easy-retweet' );?></p>
                         </td>
                     </tr>
 
