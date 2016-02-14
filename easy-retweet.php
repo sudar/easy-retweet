@@ -248,16 +248,34 @@ class EasyRetweet {
             <h2><?php _e( 'Easy Retweet Settings', 'easy-retweet' ); ?></h2>
 
             <form id="smer_form" method="post" action="options.php">
-                <?php settings_fields( 'easy-retweet' ); ?>
-                <?php $options = get_option( 'retweet-style' ); ?>
-                <?php $options['username'] = ( $options['username'] == "" )? "retweetjs" : $options['username'];?>
-                <?php $options['align'] = ( $options['align'] == "" )? "hori":$options['align'];?>
-                <?php $options['position'] = ( $options['position'] == "" )? "after":$options['position'];?>
-                <?php $options['text'] = ( $options['text'] == "" )? "Retweet":$options['text'];?>
+<?php
+		settings_fields( 'easy-retweet' );
+		$options = get_option( 'retweet-style' );
 
-                <?php $options['button-type'] = ( $options['button-type'] == "" )? "twitter":$options['button-type'];?>
-                <?php $options['t-count'] = ( $options['t-count'] == "" )? "horizontal":$options['t-count'];?>
-
+		$defaults = array(
+			'username'        => 'retweetjs',
+			'align'           => 'hori',
+			'position'        => 'after',
+			'text'            => 'Retweet',
+			'button-type'     => 'twitter',
+			't-count'         => 'horizontal',
+			'display-page'    => '',
+			'display-archive' => '',
+			'display-home'    => '',
+			'account1'        => '',
+			't-style'         => '',
+			'utm_campaign'    => '',
+			'utm_source'      => '',
+			'utm_medium'      => '',
+			't-language'      => '',
+			'username'        => '',
+			'apikey'          => '',
+			'domain'          => '',
+			'prefix'          => '',
+			'linkattr'        => '',
+		);
+		$options = wp_parse_args( $options, $defaults );
+?>
                 <h3><?php _e( 'General Settings', 'easy-retweet' ); ?></h3>
                 <table class="form-table">
                     <tr valign="top">

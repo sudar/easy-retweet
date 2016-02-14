@@ -115,7 +115,8 @@
 ### v3.0.4 (2015-07-26) - (Dev time: 0.5 hour) ###
 - Fix: Fixed issue custom retweet text. (Issue #8)
 
-### v3.1 - In Development ###
+### v3.1 - In Development - (Dev time: 1 hour) ###
+- Fix: Fix warnings and add checks for defaults
 - Fix: Use capability instead of user level
 - Tweak: Removed PHP4 compatible code
 
