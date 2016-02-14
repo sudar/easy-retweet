@@ -78,7 +78,7 @@ class EasyRetweet {
 	 * Register the settings page
 	 */
 	function register_settings_page() {
-		add_options_page( __( 'Easy Retweet', 'easy-retweet' ), __( 'Easy Retweet', 'easy-retweet' ), 8, 'easy-retweet', array( &$this, 'settings_page' ) );
+		add_options_page( __( 'Easy Retweet', 'easy-retweet' ), __( 'Easy Retweet', 'easy-retweet' ), 'manage_options', 'easy-retweet', array( &$this, 'settings_page' ) );
 	}
 
 	/**

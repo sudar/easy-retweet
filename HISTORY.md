@@ -116,6 +116,7 @@
 - Fix: Fixed issue custom retweet text. (Issue #8)
 
 ### v3.1 - In Development ###
+- Fix: Use capability instead of user level
 
 ## Upgrade Notice ##
 
