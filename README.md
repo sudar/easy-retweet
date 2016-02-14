@@ -1,16 +1,16 @@
 # Easy Retweet #
 **Contributors:** sudar  
 **Tags:** posts, Twitter, tweet, Retweet  
-**Requires at least:** 2.8  
+**Requires at least:** 4.4  
 **Donate Link:** http://sudarmuthu.com/if-you-wanna-thank-me  
-**Tested up to:** 4.2.3  
-**Stable tag:** 3.0.4  
+**Tested up to:** 4.4  
+**Stable tag:** 3.1  
 
-Adds a Retweet button to your WordPress posts
+Adds a Tweet button to your WordPress posts
 
 ## Description ##
 
-Easy ReTweet is a WordPress Plugin, which let's you add retweet or Tweet this buttons for your WordPress posts, together with the retweet count.
+Easy ReTweet is a WordPress Plugin, which let's you add Tweet this buttons for your WordPress posts.
 
 ### Usage
 
@@ -80,23 +80,17 @@ The Plugin currently has translations for the following languages.
 
 The pot file is available with the Plugin. If you are willing to do translation for the Plugin, use the pot file to create the .po files for your language and let me know. I will add it to the Plugin after giving credit to you.
 
-## Credits ##
-
-Easy ReTweet uses easy [retweet JavaScript library](http://ejohn.org/blog/retweet/) created by John Resig and is based on [Bit.ly JavaScript API](http://code.google.com/p/bitly-api/wiki/JavascriptClientApiDocumentation).
-
 ## Installation ##
 
 Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
 
 ## Screenshots ##
 
-1. General Settings page
+1. General Settings
 
-2. Bit.ly Settings page
+2. Twitter button Settings page
 
-3. Twitter button Settings page
-
-4. Enable/Disable button in the write post/page page
+3. Enable/Disable button in the write post/page page
 
 ## Readme Generator ##
 
