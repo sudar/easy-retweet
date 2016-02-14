@@ -86,11 +86,17 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 ## Screenshots ##
 
-1. General Settings
+![](screenshot-1.png)
 
-2. Twitter button Settings page
+General Settings
 
-3. Enable/Disable button in the write post/page page
+![](screenshot-2.png)
+
+Twitter button Settings page
+
+![](screenshot-3.png)
+
+Enable/Disable button in the write post/page page
 
 ## Readme Generator ##
 
