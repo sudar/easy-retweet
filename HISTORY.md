@@ -115,6 +115,8 @@
 ### v3.0.4 (2015-07-26) - (Dev time: 0.5 hour) ###
 - Fix: Fixed issue custom retweet text. (Issue #8)
 
+### v3.1 - In Development ###
+
 ## Upgrade Notice ##
 
 ### v3.0.3 ###
