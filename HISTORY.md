@@ -116,6 +116,8 @@
 - Fix: Fixed issue custom retweet text. (Issue #8)
 
 ### v3.1 - In Development - (Dev time: 1 hour) ###
+- New: Add support for latest Twitter buttons
+- New: Removed support for old bit.ly buttons
 - Fix: Fix warnings and add checks for defaults
 - Fix: Use capability instead of user level
 - Tweak: Removed PHP4 compatible code

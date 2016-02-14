@@ -58,7 +58,6 @@ class EasyRetweet {
 		add_action( 'save_post', array( $this, 'save_postdata' ) );
 
 		// Enqueue the script
-		add_action( 'template_redirect', array( $this, 'add_script' ) );
 		add_action( 'wp_head', array( $this, 'add_twitter_js' ) );
 
 		// Register filters
@@ -69,9 +68,6 @@ class EasyRetweet {
 
 		$plugin = plugin_basename( __FILE__ );
 		add_filter( "plugin_action_links_$plugin", array( $this, 'add_action_links' ) );
-
-		// for outputing js code
-		$this->deliver_js();
 	}
 
 	/**
@@ -90,49 +86,12 @@ class EasyRetweet {
 	}
 
 	/**
-	 * Enqueue the Retweet script
-	 */
-	function add_script() {
-		// Enqueue the script only if the button type is bit.ly
-		$options = get_option( 'retweet-style' );
-
-		if ( $options['button-type'] == 'bit.ly' ) {
-			wp_enqueue_script( 'retweet', get_option( 'home' ) . '/?retweetjs' );
-		}
-	}
-
-	/**
-	 *
+	 * Add twitter JS
 	 */
 	function add_twitter_js() {
-		// Enqueue the script only if the button type is bit.ly
-		$options = get_option( 'retweet-style' );
-
-		if ( $options['button-type'] != 'bit.ly' ) {
 ?>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 <?php
-		}
-	}
-
-	/**
-	 * Deliver the js through PHP
-	 * Thanks to Sivel http://sivel.net/ for this code
-	 */
-	function deliver_js() {
-		if ( array_key_exists( 'retweetjs', $_GET ) ) {
-			$options = get_option( 'retweet-style' );
-
-			$options['username'] = ( $options['username'] == '' ) ? 'retweetjs' : $options['username'];
-			$options['apikey'] = ( $options['apikey'] == '' ) ? 'R_6287c92ecaf9efc6f39e4f33bdbf80b1' : $options['apikey'];
-			$options['text'] = ( $options['text'] == '' ) ? 'Retweet':$options['text'];
-
-			header( 'Content-Type: text/javascript' );
-			print_retweet_js( $options );
-
-			// die after printing js
-			die();
-		}
 	}
 
 	/**
@@ -253,12 +212,8 @@ class EasyRetweet {
 		$options = get_option( 'retweet-style' );
 
 		$defaults = array(
-			'username'        => 'retweetjs',
-			'align'           => 'hori',
 			'position'        => 'after',
-			'text'            => 'Retweet',
-			'button-type'     => 'twitter',
-			't-count'         => 'horizontal',
+			'size'            => 'small',
 			'display-page'    => '',
 			'display-archive' => '',
 			'display-home'    => '',
@@ -268,11 +223,6 @@ class EasyRetweet {
 			'utm_source'      => '',
 			'utm_medium'      => '',
 			't-language'      => '',
-			'username'        => '',
-			'apikey'          => '',
-			'domain'          => '',
-			'prefix'          => '',
-			'linkattr'        => '',
 		);
 		$options = wp_parse_args( $options, $defaults );
 ?>
@@ -300,26 +250,10 @@ class EasyRetweet {
                     </tr>
 
                     <tr valign="top">
-                        <th scope="row"><?php _e( 'Button type', 'easy-retweet' ); ?></th>
+                        <th scope="row"><?php _e( 'Button Size', 'easy-retweet' ); ?></th>
                         <td>
-                            <p><label><input type="radio" name="retweet-style[button-type]" value="twitter" <?php checked( "twitter", $options['button-type'] ); ?> /> <?php _e( "Official Twitter button", 'easy-retweet' );?></label></p>
-                            <p><label><input type="radio" name="retweet-style[button-type]" value="bit.ly" <?php checked( "bit.ly", $options['button-type'] ); ?> /> <?php _e( "Bit.ly hit count button", 'easy-retweet' );?></label></p>
-                        </td>
-                    </tr>
-
-                </table>
-
-                <div id="twitter-button">
-                    <h3><?php _e( 'Twitter Button', 'easy-retweet' ); ?></h3>
-
-                    <table class="form-table">
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Button Style', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="radio" name="retweet-style[t-count]" value="vertical" <?php checked( "vertical", $options['t-count'] ); ?> /> <img src ="<?php echo plugin_dir_url( __FILE__ ); ?>images/t-vert.png" /> (<?php _e( "Vertical count", 'easy-retweet' );?>)</label></p>
-                            <p><label><input type="radio" name="retweet-style[t-count]" value="horizontal" <?php checked( "horizontal", $options['t-count'] ); ?> /> <img src ="<?php echo plugin_dir_url( __FILE__ ); ?>images/t-hori.png" /> (<?php _e( "Horizontal count", 'easy-retweet' );?>)</label></p>
-                            <p><label><input type="radio" name="retweet-style[t-count]" value="none" <?php checked( "none", $options['t-count'] ); ?> /> <img src ="<?php echo plugin_dir_url( __FILE__ ); ?>images/t-no.png" /> (<?php _e( "No count", 'easy-retweet' );?>)</label></p>
+                            <p><label><input type="radio" name="retweet-style[size]" value="small" <?php checked( "small", $options['size'] ); ?>> <?php _e( "Small", 'easy-retweet' );?></label></p>
+                            <p><label><input type="radio" name="retweet-style[size]" value="large" <?php checked( "large", $options['size'] ); ?>> <?php _e( "Large", 'easy-retweet' );?></label></p>
                         </td>
                     </tr>
 
@@ -363,70 +297,6 @@ class EasyRetweet {
                     </tr>
 
                 </table>
-                </div>
-
-                <div id="bitly-button">
-                    <h3><?php _e( 'Bit.ly Button', 'easy-retweet' ); ?></h3>
-
-                    <table class="form-table">
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Bit.ly Username', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="text" name="retweet-style[username]" value="<?php echo $options['username']; ?>" /></label></p>
-                            <p><?php _e( "A default account will be used if left blank.", 'easy-retweet' );?></p>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Bit.ly API Key', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="text" name="retweet-style[apikey]" value="<?php echo $options['apikey']; ?>" /></label></p>
-                            <p><?php _e( "You can get it from <a href = 'http://bit.ly/account/' target = '_blank'>http://bit.ly/account/</a>.", 'easy-retweet' );?></p>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Bit.ly Domain', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="text" name="retweet-style[domain]" value="<?php echo $options['domain']; ?>" /></label></p>
-                            <p><?php _e( "Either bit.ly (default), your custom bit.ly Pro domain, or j.mp.", 'easy-retweet' );?></p>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Button style', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="radio" name="retweet-style[align]" value="vert" <?php checked( "vert", $options['align'] ); ?> /> <img src ="<?php echo plugin_dir_url( __FILE__ ); ?>images/vert.png" /> (<?php _e( "Vertical button", 'easy-retweet' );?>)</label></p>
-                            <p><label><input type="radio" name="retweet-style[align]" value="hori" <?php checked( "hori", $options['align'] ); ?> /> <img src ="<?php echo plugin_dir_url( __FILE__ ); ?>images/hori.png" /> (<?php _e( "Horizontal button", 'easy-retweet' );?>)</label></p>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Text', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="text" name="retweet-style[text]" value="<?php echo $options['text']; ?>" /></label></p>
-                            <p><?php _e( "The text that you enter here will be displayed in the button.", 'easy-retweet' );?></p>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Message Prefix', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="text" name="retweet-style[prefix]" value="<?php echo $options['prefix']; ?>" /></label></p>
-                            <p><?php _e( "The text that you want to be added in front of each twitter message. eg: <code>RT: @sudarmuthu</code>", 'easy-retweet' );?></p>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <th scope="row"><?php _e( 'Link Attributes', 'easy-retweet' ); ?></th>
-                        <td>
-                            <p><label><input type="text" name="retweet-style[linkattr]" value="<?php echo $options['linkattr']; ?>" /></label></p>
-                            <p><?php _e( "eg: <code>rel='nofollow'</code> or <code>target = '_blank'</code>", 'easy-retweet' );?></p>
-                        </td>
-                    </tr>
-
-                </table>
-                </div>
 
                 <p class="submit">
                     <input type="submit" name="easy-retweet-submit" class="button-primary" value="<?php _e( 'Save Changes', 'easy-retweet' ); ?>" />
@@ -458,6 +328,20 @@ class EasyRetweet {
 	function append_retweet_button( $content ) {
 		global $post;
 		$options = get_option( 'retweet-style' );
+		$defaults = array(
+			'position'        => 'after',
+			'size'            => 'small',
+			'display-page'    => '',
+			'display-archive' => '',
+			'display-home'    => '',
+			'account1'        => '',
+			't-style'         => '',
+			'utm_campaign'    => '',
+			'utm_source'      => '',
+			'utm_medium'      => '',
+			't-language'      => '',
+		);
+		$options = wp_parse_args( $options, $defaults );
 
 		$enable_retweet = get_post_meta( $post->ID, 'enable_retweet_button', true );
 
@@ -533,11 +417,11 @@ add_action( 'init', 'EasyRetweet' ); function EasyRetweet() { global $EasyRetwee
 
 /**
  * Template function to add the retweet button
- * @param unknown $display (optional)
- * @return unknown
+ * @param bool $display (optional)
  */
 function easy_retweet_button( $display = true ) {
 	global $wp_query;
+
 	$post = $wp_query->post;
 	$permalink = get_permalink( $post->ID );
 	$custom_retweet_text = get_post_meta( $post->ID, 'custom_retweet_text', true );
@@ -564,57 +448,55 @@ function easy_retweet_button( $display = true ) {
 		// Retweet button is enabled
 
 		$options = get_option( 'retweet-style' );
+		$defaults = array(
+			'position'        => 'after',
+			'size'            => 'small',
+			'display-page'    => '',
+			'display-archive' => '',
+			'display-home'    => '',
+			'account1'        => '',
+			't-style'         => '',
+			'utm_campaign'    => '',
+			'utm_source'      => '',
+			'utm_medium'      => '',
+			't-language'      => '',
+		);
+		$options = wp_parse_args( $options, $defaults );
 
-		if ( $options['button-type'] == 'bit.ly' ) {
-			//Bit.ly Button
-			$align = ( $options['align'] == 'vert' )? 'vert': '';
+		$size         = $options['size'];
+		$account1     = $options['account1'];
+		$lang         = $options['t-language'];
+		$style        = $options['t-style'];
 
-			$output = "<a href='$permalink' class='retweet $align' startCount = '0'";
+		$utm_campaign = $options['utm_campaign'];
+		$utm_source   = $options['utm_source'];
+		$utm_medium   = $options['utm_medium'];
 
-			if ( $options['linkattr'] != '' ) {
-				$output .= ' ' . $options['linkattr'] . ' ';
-			}
+		if ( $lang != '' && $lang != 'en' ) {
+			$lang = "data-lang='$lang'";
+		}
 
-			$output .= ">{$custom_retweet_text}</a>";
-		} else {
-			//Twitter button
-
-			$t_count      = $options['t-count'];
-			$account1     = $options['account1'];
-			$lang         = $options['t-language'];
-			$style        = $options['t-style'];
-
-			$utm_campaign = $options['utm_campaign'];
-			$utm_source   = $options['utm_source'];
-			$utm_medium   = $options['utm_medium'];
-
-			if ( $lang != '' && $lang != 'en' ) {
-				$lang = "data-lang='$lang'";
-			}
-
-			if ( $utm_campaign != '' && $utm_source != '' && $utm_medium != '' ) {
-				if ( strpos( $permalink, '?' ) ) {
-					$url = "$permalink&utm_campaign=$utm_campaign&utm_source=$utm_source&utm_medium=$utm_medium";
-				} else {
-					$url = "$permalink?utm_campaign=$utm_campaign&utm_source=$utm_source&utm_medium=$utm_medium";
-				}
+		if ( $utm_campaign != '' && $utm_source != '' && $utm_medium != '' ) {
+			if ( strpos( $permalink, '?' ) ) {
+				$url = "$permalink&utm_campaign=$utm_campaign&utm_source=$utm_source&utm_medium=$utm_medium";
 			} else {
-				$url = $permalink;
+				$url = "$permalink?utm_campaign=$utm_campaign&utm_source=$utm_source&utm_medium=$utm_medium";
 			}
+		} else {
+			$url = $permalink;
+		}
 
-			$output = <<<EOD
-            <a href="http://twitter.com/share" class="twitter-share-button"
-                data-count="$t_count"
-                data-text="$custom_retweet_text"
-                data-via="$account1"
-                data-url="$url"
-                data-counturl="$permalink"
-                $lang>Tweet</a>
+		$output = <<<EOD
+			<a href="http://twitter.com/share" class="twitter-share-button"
+				data-size="$size"
+				data-text="$custom_retweet_text"
+				data-via="$account1"
+				data-url="$url"
+				$lang>Tweet</a>
 EOD;
 
-			if ( $style != '' ) {
-				$output = "<div style = '$style'>$output</div>";
-			}
+		if ( $style != '' ) {
+			$output = "<div style = '$style'>$output</div>";
 		}
 	}
 
@@ -623,185 +505,5 @@ EOD;
 	} else {
 		return $output;
 	}
-}
-
-/**
- * Print Retweet js
- * @param array $options Plugin options
- */
-function print_retweet_js( $options ) {
-?>
-/*
- * Easy Retweet Button
- * http://ejohn.org/blog/retweet/
- *   by John Resig (ejohn.org)
- *
- * Licensed under the MIT License:
- * http://www.opensource.org/licenses/mit-license.php
- */
-
-(function(){
-
-window.RetweetJS = {
-	// Your Bit.ly Username
-	bitly_user: "<?php echo $options['username'];?>",
-
-	// Your Bit.ly API Key
-	// Found here: http://bit.ly/account
-	bitly_key: "<?php echo $options['apikey']; ?>",
-
-	// The text to replace the links with
-	link_text: (/windows/i.test( navigator.userAgent) ? "&#9658;" : "&#9851;") +
-		"&nbsp;<?php echo $options['text'];?>",
-
-	// What # to show (Use "clicks" for # of clicks or "none" for nothing)
-	count_type: "clicks",
-
-	// Tweet Prefix text
-	// "RT @jeresig " would result in: "RT @jeresig Link Title http://bit.ly/asdf"
-	prefix: "<?php echo $options['prefix']; ?> ",
-
-	// Style information
-	styling: "a.retweet { font: 12px Helvetica,Arial; color: #000; text-decoration: none; border: 0px; }" +
-		"a.retweet span { color: #FFF; background: #94CC3D; margin-left: 2px; border: 1px solid #43A52A; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding: 3px; }" +
-		"a.vert { display: block; text-align: center; font-size: 16px; float: left; margin: 4px; }" +
-		"a.retweet strong.vert { display: block; margin-bottom: 4px; background: #F5F5F5; border: 1px solid #EEE; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding: 3px; }" +
-		"a.retweet span.vert { display: block; font-size: 12px; margin-left: 0px; }"
-};
-
-//////////////// No Need to Configure Below Here ////////////////
-
-var loadCount = 1;
-
-// Asynchronously load the Bit.ly JavaScript API
-// If it hasn't been loaded already
-if ( typeof BitlyClient === "undefined" ) {
-	var head = document.getElementsByTagName("head")[0] ||
-		document.documentElement;
-	var script = document.createElement("script");
-	script.src = "http://bit.ly/javascript-api.js?version=latest&login=" +
-		RetweetJS.bitly_user + "&apiKey=" + RetweetJS.bitly_key;
-	script.charSet = "utf-8";
-	head.appendChild( script );
-
-	var check = setInterval(function(){
-		if ( typeof BitlyCB !== "undefined" ) {
-			clearInterval( check );
-			head.removeChild( script );
-			loaded();
-		}
-	}, 10);
-
-	loadCount = 0;
-}
-
-if ( document.addEventListener ) {
-	document.addEventListener("DOMContentLoaded", loaded, false);
-
-} else if ( window.attachEvent ) {
-	window.attachEvent("onload", loaded);
-}
-
-function loaded(){
-	// Need to wait for doc ready and js ready
-	if ( ++loadCount < 2 ) {
-		return;
-	}
-
-	var elems = [], urlElem = {}, hashURL = {};
-
-	BitlyCB.shortenResponse = function(data) {
-		for ( var url in data.results ) {
-			var hash = data.results[url].userHash;
-			hashURL[hash] = url;
-
-			var elems = urlElem[ url ];
-
-			for ( var i = 0; i < elems.length; i++ ) {
-				elems[i].href += hash;
-			}
-
-			if ( RetweetJS.count_type === "clicks" ) {
-				BitlyClient.stats(hash, 'BitlyCB.statsResponse');
-			}
-		}
-	};
-
-	BitlyCB.statsResponse = function(data) {
-		var clicks = data.results.clicks, hash = data.results.userHash;
-		var url = hashURL[ hash ], elems = urlElem[ url ];
-
-		if ( clicks > 0 ) {
-			for ( var i = 0; i < elems.length; i++ ) {
-				var strong = document.createElement("strong");
-				strong.appendChild( document.createTextNode( clicks + parseInt(elems[i].attributes.startCount.value) + " " ) );
-				elems[i].insertBefore(strong, elems[i].firstChild);
-
-				if ( /(^|\s)vert(\s|$)/.test( elems[i].className ) ) {
-					elems[i].firstChild.className = elems[i].lastChild.className = "vert";
-				}
-			}
-		}
-
-		hashURL[ hash ] = urlElem[ url ] = null;
-	};
-
-	if ( document.getElementsByClassName ) {
-		elems = document.getElementsByClassName("retweet");
-	} else {
-		var tmp = document.getElementsByTagName("a");
-		for ( var i = 0; i < tmp.length; i++ ) {
-			if ( /(^|\s)retweet(\s|$)/.test( tmp[i].className ) ) {
-				elems.push( tmp[i] );
-			}
-		}
-	}
-
-	if ( elems.length && RetweetJS.styling ) {
-		var style = document.createElement("style");
-		style.type = "text/css";
-
-		try {
-			style.appendChild( document.createTextNode( RetweetJS.styling ) );
-		} catch (e) {
-			if ( style.styleSheet ) {
-				style.styleSheet.cssText = RetweetJS.styling;
-			}
-		}
-
-		document.body.appendChild( style );
-	}
-
-	for ( var i = 0; i < elems.length; i++ ) {
-		var elem = elems[i];
-
-		if ( /(^|\s)self(\s|$)/.test( elem.className ) ) {
-			elem.href = window.location;
-			elem.title = document.title;
-		}
-
-		var origText = elem.title || elem.textContent || elem.innerText,
-			href = elem.href;
-
-		elem.innerHTML = "<span>" + RetweetJS.link_text + "</span>";
-		elem.title = "";
-		elem.href = "http://twitter.com/intent/tweet?text=" +
-			encodeURIComponent(RetweetJS.prefix + origText + " http://<?php if ( $options['domain'] != '' ) { echo $options['domain']; } else { echo 'bit.ly'; } ?>/");
-
-<?php
-	if ( $options['domain'] != '' ) {
-		$domain = ", 'domain':'" . $options['domain'] . "'";
-	}
-?>
-		if ( urlElem[ href ] ) {
-			urlElem[ href ].push( elem );
-		} else {
-			urlElem[ href ] = [ elem ];
-			BitlyClient.call('shorten', {'longUrl':href, 'history':'1' <?php echo $domain;?>}, 'BitlyCB.shortenResponse');
-		}
-	}
-}
-})();
-<?php
 }
 ?>
