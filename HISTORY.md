@@ -133,3 +133,5 @@ Fix issue in utm_medium parameter
 ### v3.0.4 ###
 Fixed issue custom retweet text.
 
+### v3.0.5 ###
+Fixed issue #9 - PHP notice in Add New post/page screen
