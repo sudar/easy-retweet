@@ -149,11 +149,11 @@ class EasyRetweet {
 		// verify this came from the our screen and with proper authorization,
 		// because save_post can be triggered at other times
 
-		if ( ! wp_verify_nonce( $_POST['retweet_noncename'], plugin_basename( __FILE__ ) ) ) {
+		if ( ! isset( $_POST['retweet_noncename'] ) || ! wp_verify_nonce( $_POST['retweet_noncename'], plugin_basename( __FILE__ ) ) ) {
 			return $post_id;
 		}
 
-		if ( 'page' == $_POST['post_type'] ) {
+		if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
 			if ( ! current_user_can( 'edit_page', $post_id ) ) {
 				return $post_id;
 			}
