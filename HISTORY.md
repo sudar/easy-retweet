@@ -122,6 +122,9 @@
 - Fix: Use capability instead of user level
 - Tweak: Removed PHP4 compatible code
 
+### v3.1.1 - (2016-04-20) - (Dev time: 0.5 hour) ###
+- Fix: Fixed a PHP warning notice in Add New Post/page screen. (Issue #9)
+
 ## Upgrade Notice ##
 
 ### v3.1 ###
@@ -133,5 +136,5 @@ Fix issue in utm_medium parameter
 ### v3.0.4 ###
 Fixed issue custom retweet text.
 
-### v3.0.5 ###
-Fixed issue #9 - PHP notice in Add New post/page screen
+### v3.1.1 ###
+Fixed a PHP warning notice in Add New Post/page screen

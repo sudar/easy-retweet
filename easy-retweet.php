@@ -7,7 +7,7 @@
  Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
  License: GPL
  Author: Sudar
- Version: 3.1
+ Version: 3.1.1
  Author URI: http://sudarmuthu.com/
  Text Domain: easy-retweet
  Domain Path: languages/
